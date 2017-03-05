@@ -1,0 +1,1 @@
+SELECT employee.fullname employeename,student.`fullname` studentname, course.cname FROM employee,student,course,teaches WHERE e_id=eid AND s_id=sid AND c_id=cid;
