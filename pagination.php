@@ -1,5 +1,5 @@
 <?php
-	mysql_connect('localhost','root','');
+	mysql_connect('localhost','root','root');
 	mysql_select_db('library');
 	$count_query = mysql_query("SELECT NULL FROM books");
 	$count = mysql_num_rows($count_query);

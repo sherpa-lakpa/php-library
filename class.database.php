@@ -3,7 +3,7 @@
 		protected $db_conn;
 		public $db_name = 'library';
 		public $db_user = 'root';
-		public $db_pass = '';
+		public $db_pass = 'root';
 		public $db_host = 'localhost';
 
 		function connect(){
