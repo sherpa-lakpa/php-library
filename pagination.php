@@ -1,8 +1,7 @@
 <?php
-	mysql_connect('localhost','root','root');
-	mysql_select_db('library');
-	$count_query = mysql_query("SELECT NULL FROM books");
-	$count = mysql_num_rows($count_query);
+	$con = new mysqli('localhost','root','root','library');
+	$count_query = mysqli_query($con, "SELECT NULL FROM books");
+	$count = mysqli_num_rows($count_query);
 
 	//Paging starts here
 
@@ -24,7 +23,7 @@
 	// $Limit = 'LIMIT 70(Limit from),10(limit by)'
 
 	$limit = "LIMIT ".($page-1)*$perPage.",$perPage";
-	$query = mysql_query("SELECT bid,name,image,author FROM books ORDER BY bid DESC $limit");
+	$query = mysqli_query($con, "SELECT bid,name,image,author FROM books ORDER BY bid DESC $limit");
 	$pagination = "";
 	if($lastPage != 1){
 		if($page != $lastPage){
@@ -39,7 +38,7 @@
 	$output = '<div id="abook"><table>';
 	$radio = '<td style="width:10px;padding:10px;"><input type="submit" value="Details.." class="detail"/></td>';
 	$outimage = "";
-	while($row=mysql_fetch_array($query)){
+	while($row=mysqli_fetch_array($query)){
 
 		$outimage = '<tr><form method="get">
 		<td style="width:100px;padding:10px;">
