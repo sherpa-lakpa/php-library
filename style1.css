@@ -1,3 +1,7 @@
+.bold
+{
+  font-weight:bold;
+}
 .result_wrapper
 {
   width:100%;
@@ -7,13 +11,14 @@
   background-size:cover;
   background-repeat: no-repeat;
     background-attachment: fixed;
+
 }
 .resultsearch
 {
 	background:rgba(255,255,255,0.2);
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.9);
 	position:relative;
-	top:285px;
+	top:308px;
 	left:235px;
   box-shadow:0px 3px 10px black;
   border:2px solid white;
@@ -35,5 +40,74 @@
   transition:all 0.6s;
   border:1px solid black;
   cursor:pointer;
-  
+
+}
+
+.marksheet_wrapper
+{
+  background:url("gallery/paper1.jpg");
+  background-size:cover;
+  width:80%;
+  margin:5px;
+  margin-bottom:20px;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow:0px 10px 10px black;
+
+  padding:40px 0px 100px 0px;
+}
+#collegein
+{
+  width:70%;
+ //background:red;
+padding-top:10px;
+  margin-left:auto;
+  margin-right:auto;
+}
+#collegein img
+{
+  height:70px;
+  width:8 0px;
+  position:absolute;
+}
+.marksheet_table
+{
+  //background:url('gallery/paper.jpg');
+  background-size:cover;
+  border:2px solid black;
+  padding:20px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  border-collapse: collapse;
+  margin-bottom:20px;
+}
+.marksheet_table tr td
+{
+  border:1px solid black;
+  padding:10px;
+
+}
+.marksheet_table tr td
+{
+  border-right:0px solid black;
+  border-left:0px solid black ;
+
+}
+.msdetail
+{
+width:70%;
+margin:30px;
+//background:red;
+margin-left:auto;
+margin-right:auto;
+}
+.msdetail tr td
+{
+  padding:5px;
+}
+.after_table
+{
+  margin-left:150px;
+  text-align:left;
 }

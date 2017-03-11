@@ -2,9 +2,8 @@ body,html
 {
 	margin:0px;
 	padding:0px;
-	background:#5C5B5C;
+	//background:black;
 	font-family:sansation;
-			background:#07602F;
 
 }
 /*GRID TYPES*/
@@ -118,7 +117,10 @@ body,html
 {
 	display:none;
 }
-
+.bold
+{
+	font-weight:bolder;
+}
 .wrapper
 {
 	width:100%;
@@ -142,8 +144,8 @@ body,html
 {
 	height:100%;
 	background:url("gallery/5.jpg");
-	background-size:cover;
 	float:left;
+	background-size:cover;
 	Width:50%;
 	position:fixed;
 	padding-top:50px;
