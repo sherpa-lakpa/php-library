@@ -20,16 +20,16 @@ if(isset($_SESSION['todo_name'])){
  <div class="tabcontents" >
             <div id="view1">
             <form name="fbook" action="" method="post">
-                <input type="text" placeholder="Enter Book Id or Name" name="sbook" onkeyup="sbooks()"><input type="submit" value="Search" class="search"></form>
+                <input type="text" placeholder="Enter Book Id or Name" name="sbook" onkeyup="sbooks()" id="Book-search"><input type="submit" value="Search" class="search"></form>
             </div>
 
             <div id="view2">
             <form name="fnote" action="" method="post">
-                <input type="text" placeholder="Enter Subject Initials" name="note" onkeyup="notes()"><input type="submit" value="Search" class="search"></form>
+                <input type="text" placeholder="Enter Subject Initials" name="note" onkeyup="notes()" id="Note-search"><input type="submit" value="Search" class="search"></form>
             </div>
             <div id="view3">
             <form name="febook" action="" method="post">
-                <input type="text" placeholder="Enter Subject Initials" name="ebook" onkeyup="ebooks()"><input type="submit" value="Search" class="search"></form>
+                <input type="text" placeholder="Enter Subject Initials" name="ebook" onkeyup="ebooks()" id="Ebook-search"><input type="submit" value="Search" class="search"></form>
             </div>
         </div>
   </div>
@@ -38,32 +38,67 @@ if(isset($_SESSION['todo_name'])){
   <?php echo $pagination; ?></div>
   <!-- Search functions -->
   <script type="text/javascript">
+  var Initial = document.getElementById('blist').innerHTML
 function sbooks()
 {
-  xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET","sea.php?nm="+document.fbook.sbook.value,false);
-  xmlhttp.send(null);
+  var x = document.getElementById('Book-search').value;
 
+  if (x == '') {
+    document.getElementById("blist").innerHTML= Initial;
+  }else{
+    
+        xmlhttp=new XMLHttpRequest();
+      xmlhttp.open("GET","sea.php?nm="+document.fbook.sbook.value,false);
+      xmlhttp.send(null);
+      var data = xmlhttp.responseText;
+      //alert(data);
+      if(data != "<table></table>"){
+         document.getElementById("blist").innerHTML=xmlhttp.responseText;
+      }else{
+         document.getElementById("blist").innerHTML= MyDiv.innerHTML;
+      }
+  }
   // This is usefull for store response
-  document.getElementById("blist").innerHTML=xmlhttp.responseText;
+ 
 }
 function notes()
 {
-  xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET","note.php?nm="+document.fnote.note.value,false);
-  xmlhttp.send(null);
+  var x = document.getElementById('Note-search').value;
 
-  // This is usefull for store response
-  document.getElementById("blist").innerHTML=xmlhttp.responseText;
+  if (x == '') {
+    document.getElementById("blist").innerHTML= Initial;
+  }else{
+    
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","note.php?nm="+document.fnote.note.value,false);
+    xmlhttp.send(null);
+      var data = xmlhttp.responseText;
+      //alert(data);
+      if(data != "<table></table>"){
+         document.getElementById("blist").innerHTML=xmlhttp.responseText;
+      }else{
+         document.getElementById("blist").innerHTML= Initial;
+      }
+  }
 }
 function ebooks()
 {
-  xmlhttp=new XMLHttpRequest();
-  xmlhttp.open("GET","ebook.php?nm="+document.febook.ebook.value,false);
-  xmlhttp.send(null);
+  var x = document.getElementById('Note-search').value;
 
-  // This is usefull for store response
-  document.getElementById("blist").innerHTML=xmlhttp.responseText;
+  if (x == '') {
+    document.getElementById("blist").innerHTML= Initial;
+  }else{
+    
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET","ebook.php?nm="+document.febook.ebook.value,false);
+    xmlhttp.send(null);
+      //alert(data);
+      if(data != "<table></table>"){
+         document.getElementById("blist").innerHTML=xmlhttp.responseText;
+      }else{
+         document.getElementById("blist").innerHTML= Initial;
+      }
+  }
 }
 </script>
 
