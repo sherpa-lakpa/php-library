@@ -118,7 +118,7 @@
 	$mypdf->Cell(191,8, "", 0, 1,"C");
 
 	$mypdf->Cell(20,8, "", 0, 0,"C");$mypdf->Cell(171,8, "DATE OF ISSUE : $exam_date", 0, 1,"L");
-	$mypdf->Cell(20,8, "", 0, 0,"C");$mypdf->Cell(171,8, "FACULTY INCHARGE: Ram Prasad", 0, 1,"L");
+	$mypdf->Cell(20,8, "", 0, 0,"C");$mypdf->Cell(171,8, "FACULTY INCHARGE: $incharge", 0, 1,"L");
 
 
 

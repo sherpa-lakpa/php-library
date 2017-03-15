@@ -1,7 +1,7 @@
 <?php
 	$nm = $_GET['nm'];
 	if($nm != ""){
-	$con = new mysqli('localhost','root','root','php-library');
+	$con = new mysqli('localhost','root','','php-librarys');
 	$res = mysqli_query($con, "SELECT * FROM books WHERE name LIKE('%$nm%') LIMIT 0,6");
 	echo '<table>';
 	while($row=mysqli_fetch_array($res)){

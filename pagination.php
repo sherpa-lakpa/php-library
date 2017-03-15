@@ -1,5 +1,5 @@
 <?php
-	$con = new mysqli('localhost','root','root','php-library');
+	$con = new mysqli('localhost','root','','php-librarys');
 	$count_query = mysqli_query($con, "SELECT NULL FROM books");
 	$count = mysqli_num_rows($count_query);
 

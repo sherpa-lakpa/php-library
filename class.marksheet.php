@@ -19,6 +19,9 @@
 		function getMarksheet($sid,$examination_id){
 			$query = $this->linker->query("SELECT * FROM `marksheet` WHERE stu_id='$sid' AND examination_id = '$examination_id'");
 			$counts = $query->rowCount();
+			if ($counts > 1) {
+				return 1;
+			}
 			return $counts;
 		}
 

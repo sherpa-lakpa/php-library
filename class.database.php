@@ -1,9 +1,9 @@
 <?php
 	class dbConnection{
 		protected $db_conn;
-		public $db_name = 'php-library';
+		public $db_name = 'php-librarys';
 		public $db_user = 'root';
-		public $db_pass = 'root';
+		public $db_pass = '';
 		public $db_host = 'localhost';
 
 		function connect(){

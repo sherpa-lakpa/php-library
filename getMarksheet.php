@@ -28,6 +28,7 @@
 			$sem_name = $values['name'];
 		}
 		$exam_date = $value['date'];	
+		$incharge = $value['incharge'];
 	}
 	foreach ($get_examtype as $key => $value) {
 		$exam_type = $value['type'];
