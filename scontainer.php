@@ -57,10 +57,15 @@
 				<!-- END OF FEEDBACK -->
 	<div style="position:absolute;left:185px;top:30px;">
 <?php
-		if(isset($_SESSION['todo_name'])){
-		  echo '<div style="float:right;color:white;padding:10px;border-radius:5px;z-index:3;font-size:17px;text-transform:uppercase;" id="hello"> <b>'.$_SESSION['todo_name'].'&nbsp;&nbsp;<br><section style="font-size:15px;text-transform:capitalize;text-align:left;color:#231A11;">4th Semester</section></b></div><a href="libs/logout.php"><div style="float:right;color:red;margin-left:5px;background:rgba(0,0,0,0.7);font-size:12px;position:absolute;top:40px;right:0px;padding:5px;box-shadow:0px 2px 5px black;border-radius:5px;cursor:pointer;display:none;" id="hello_logout">LogOut</div></a>';
-		}
-		?>
+if(isset($_SESSION['todo_name'])){
+	echo '<div style="float:right;color:white;padding:10px;border-radius:5px;z-index:3;font-size:17px;text-transform:uppercase;" id="hello"> <b>'.$_SESSION['todo_name'].'&nbsp;&nbsp;<br><section style="font-size:15px;text-transform:capitalize;text-align:left;color:#231A11;">4th Semester</section></b></div>';}
+
+
+ ?>
+
+
+
+
 		</div>
 <?php
 	//echo 'hello! '.$student_name;
@@ -127,7 +132,8 @@
 	<!-- STARTING FOR EDITING OF PROFILE-->
 			</table>
 			<table class="loggedin_table grid80" id="edit_profile">
-				<tr><img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:-435px;right:-388px;" id="close">
+				<tr>
+					<!--<img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:-435px;right:-388px;" id="close">-->
 					<td colspan="2" style="text-align:center;font-size:20px;border-radius:5px 5px 0px 0px;box-shadow:none;">STUDENT INFORMATION(edit)</td>
 				</tr>
 				<tr>
@@ -174,8 +180,15 @@
 
 			</div>
 			<button onClick="hello()" id="top_button1">Full Info.</button>
+			<a href="result.php"><button id="top_button1">Marksheet</button></a>
 			<button onClick="edit_profile()" id="top_button2">Edit</button>
 
+<!--LOGOUT BUTTON-->
+			<?php
+					if(isset($_SESSION['todo_name'])){
+					  echo '<a href="libs/logout.php"><div style="float:left;color:red;margin-left:5px;background:rgba(0,0,0,0.7);font-size:12px;padding:5px;box-shadow:0px 2px 5px black;border-radius:5px;cursor:pointer;position:relative;top:-7px;right:-360px;" id="hello_logout">LogOut</div></a>';
+					}
+					?>
 
 <div >
 <?php
@@ -254,20 +267,22 @@
 <script type="text/javascript">
 function hello()
 	{
-		document.getElementById('hello_logout').style.display="block";
+		document.getElementById('hello_logout').style.display="none";
 		document.getElementById('profile').style.display="inline-block";
 		document.getElementById('top_display').style.display="none";
 			document.getElementById('top_button1').style.display="none";
-			document.getElementById('top_button2').style.display="none";
+			//document.getElementById('top_button2').style.display="none";
 	document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
+
+			document.getElementById('top_button2').style.display="inline";
 		//document.getElementById('close').style.display="none";
 
 	};
 	function cancel()
 	{
 
-		document.getElementById('hello_logout').style.display="none";
+		document.getElementById('hello_logout').style.display="inline-block";
 			document.getElementById('profile').style.display="none";
 			document.getElementById('top_display').style.display="block";
 		document.getElementById('top_button1').style.display="block";
@@ -277,16 +292,20 @@ document.getElementById('hello').style.display="block";
 document.getElementById('feedback').style.display="none";
 document.getElementById('edit_profile').style.display="none";
 
+	document.getElementById('top_button2').style.display="none";
+
 	};
 	function edit_profile()
 	{
-		document.getElementById('hello_logout').style.display="none";
+		//document.getElementById('hello_logout').style.display="none";
 		document.getElementById('edit_profile').style.display="inline-block";
 		document.getElementById('top_display').style.display="none";
 			document.getElementById('top_button1').style.display="none";
 			document.getElementById('top_button2').style.display="none";
 	document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
+
+			document.getElementById('profile').style.display="none";
 	}
 	function feedback()
 	{

@@ -291,6 +291,15 @@ background:rgba(0,0,0,0.85);
 	border-radius:10px;
 	box-shadow:0px 2px 20px black;
 }
+.resultpage
+{
+	background:white;
+	position:absolute;
+	top:0px;
+	left:0px;
+	height:100px;
+	width:100px;
+}
 
 
 
@@ -744,7 +753,8 @@ input
 	background:url("gallery/1.jpg");
 	background-size:cover;
 	background-attachment:fixed;
-	height:100%;
+
+	height:auto;
 }
 .login_bar
 {
@@ -753,7 +763,9 @@ input
 	padding:10px;
 	align:right;
 	height:30px;
-	position:fixed;//CHANGED
+	z-index:9;
+	position:fixed;
+	background:black;
 }
 .login_bar img
 {
@@ -789,7 +801,7 @@ input
 .body_container
 {
 	background:rgba(0,0,0,0.4);
-	height:630px;
+	height:730px;
 }
 .r_container
 {
@@ -1092,12 +1104,27 @@ input
 
 }
 
-
- #top_button1,#top_button2
+#top_button1
 {
 	position:relative;
 	top:45px;
-	left:-70px;
+	left:-40px;
+	padding:10px 20px 10px 20px;
+	border-radius:3px;
+	border:0px;
+	z-index:10;
+	font-size:15px;
+	cursor:pointer;
+	background:#07602F;
+	color:white;
+	margin:5px;
+	outline:0;
+}
+#top_button2
+{
+	position:absolute	;
+	top:5px;
+	left:60px;
 	padding:10px 20px 10px 20px;
 	border-radius:3px;
 	border:0px;
@@ -1107,6 +1134,8 @@ input
 	background:#07602F;
 	color:white;
 	margin:5;
+	display:none;
+		outline:0;
 }
 .scontainer .issued_number
 {
@@ -1352,6 +1381,8 @@ input
 {
 	margin-top:-75px;
 	height:auto;
+	padding-bottom:40px;
+	padding-top:60px;
 }
 .bcontainer
 {
