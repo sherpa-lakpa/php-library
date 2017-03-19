@@ -16,4 +16,8 @@
      <div class="newaccount">
           <a href="registration.php"><button class="new" style="cursor:pointer;">Create a new account</button></a>
       </div>
+      <div class="result">
+           <a href="result.php"><button class="resultbutton" style="cursor:pointer;">Result</button></a>
+       </div>
+
 </div>

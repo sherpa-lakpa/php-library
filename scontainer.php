@@ -54,7 +54,7 @@
 								</div>
 								</div>
 					</div>
-				<!-- END OF FEEDBACK -->
+				<!-- END OF FEEDBACK -->	
 	<div style="position:absolute;left:185px;top:30px;">
 <?php
 if(isset($_SESSION['todo_name'])){
@@ -97,7 +97,7 @@ if(isset($_SESSION['todo_name'])){
 				?>
 <!--START OF FULL INFO-->
 				<table class="loggedin_table grid80" id="profile">
-					<tr><img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:-435px;right:-388px;" id="close">
+					<tr><img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:-535px;right:-430px;z-index:9;" id="close">
 						<td colspan="2" style="text-align:center;font-size:20px;border-radius:5px 5px 0px 0px;box-shadow:none;">STUDENT INFORMATION</td>
 					</tr>
 					<tr>
@@ -285,8 +285,8 @@ function hello()
 		document.getElementById('hello_logout').style.display="inline-block";
 			document.getElementById('profile').style.display="none";
 			document.getElementById('top_display').style.display="block";
-		document.getElementById('top_button1').style.display="block";
-		document.getElementById('top_button2').style.display="block";
+		document.getElementById('top_button1').style.display="inline";
+		document.getElementById('top_button2').style.display="inline";
 		document.getElementById('student_picture').style.display="block";
 document.getElementById('hello').style.display="block";
 document.getElementById('feedback').style.display="none";
@@ -298,7 +298,7 @@ document.getElementById('edit_profile').style.display="none";
 	function edit_profile()
 	{
 		//document.getElementById('hello_logout').style.display="none";
-		document.getElementById('edit_profile').style.display="inline-block";
+		document.getElementById('edit_profile').style.display="inline";
 		document.getElementById('top_display').style.display="none";
 			document.getElementById('top_button1').style.display="none";
 			document.getElementById('top_button2').style.display="none";

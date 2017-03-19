@@ -46,7 +46,7 @@ function sbooks()
   if (x == '') {
     document.getElementById("blist").innerHTML= Initial;
   }else{
-    
+
         xmlhttp=new XMLHttpRequest();
       xmlhttp.open("GET","sea.php?nm="+document.fbook.sbook.value,false);
       xmlhttp.send(null);
@@ -59,7 +59,7 @@ function sbooks()
       }
   }
   // This is usefull for store response
- 
+
 }
 function notes()
 {
@@ -68,7 +68,7 @@ function notes()
   if (x == '') {
     document.getElementById("blist").innerHTML= Initial;
   }else{
-    
+
     xmlhttp=new XMLHttpRequest();
     xmlhttp.open("GET","note.php?nm="+document.fnote.note.value,false);
     xmlhttp.send(null);
@@ -88,7 +88,7 @@ function ebooks()
   if (x == '') {
     document.getElementById("blist").innerHTML= Initial;
   }else{
-    
+
     xmlhttp=new XMLHttpRequest();
     xmlhttp.open("GET","ebook.php?nm="+document.febook.ebook.value,false);
     xmlhttp.send(null);
@@ -100,6 +100,7 @@ function ebooks()
       }
   }
 }
+
 </script>
 
 <!--END OF TABS-->

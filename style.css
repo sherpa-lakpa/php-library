@@ -270,7 +270,7 @@ background:rgba(0,0,0,0.85);
 {
 	background:linear-gradient(#07602F,#008000);
 }
-.lcontainer .newaccount .new
+.searchpage .newaccount .new
 {
 	color:white;
 	background:#03705B;
@@ -283,7 +283,7 @@ background:rgba(0,0,0,0.85);
 	outline:0;
 	cursor:pointer;
 }
-.lcontainer .newaccount .new:hover
+.searchpage .newaccount .new:hover
 {
 	background:white;
 	border:1.5px solid teal;
@@ -291,6 +291,19 @@ background:rgba(0,0,0,0.85);
 	border-radius:10px;
 	box-shadow:0px 2px 20px black;
 }
+.searchpage .result .resultbutton
+{
+	background:#F7941E;
+}
+.searchpage .result .resultbutton:hover
+{
+	background:white;
+	border:1.5px solid #F7941E		 ;
+	color:teal;
+	border-radius:10px;
+	box-shadow:0px 2px 20px black;
+}
+
 .resultpage
 {
 	background:white;
@@ -427,17 +440,21 @@ bottom:50px;
 
 }
 /*END OF AFTER LOGGEDIN*/
-
+#notdisplay{
+//	background:red;
+}
 .rcontainer
 {
-	height:1000px;
-	background:url("gallery/3.jpg");//CHANGED
-	background-attachment:fixed;
+
+	background:url("gallery/3.jpg")bottom center no-repeat #ffffff;
+	//	background-attachment:fixed;
 	float:right;
 	background-size:cover;
 	padding-top:50px;
-
-}
+	position: relative;
+		height:66.67vh;
+		overflow:hidden;
+ }
 .rcontainer .desc1
  {
 					text-align:center;
@@ -447,6 +464,7 @@ bottom:50px;
 					margin-top:50px;
 				//	margin-bottom:-5px;
 		//			box-shadow:0px 2px 10px black;
+
 	}
 
 	ul.tabs
@@ -1133,7 +1151,7 @@ input
 	cursor:pointer;
 	background:#07602F;
 	color:white;
-	margin:5;
+	margin:5px;
 	display:none;
 		outline:0;
 }
@@ -1161,6 +1179,7 @@ input
 	transition:all 0.6s;
 
 }
+/*PUT EVERYTHING IN A DIV AND USE JAVASCRIPT TO HIDE*/
 .scontainer #profile
 {
 	background:rgba(255,255,255,0.05);
@@ -1176,7 +1195,9 @@ input
 	color:white;
 	color:black;
 	background:rgba(255,255,255,0.2);
-
+	position:relative;
+	top:-40px;
+	left:50px;
 }
 .scontainer #edit_profile
 {
