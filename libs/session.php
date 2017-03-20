@@ -11,7 +11,7 @@
 				session_destroy();
 			}
 		}
-		if ($_SESSION['marksheet_holder']) {
+		if (isset($_SESSION['marksheet_holder'])) {
 			include_once('class.marksheet.php');
 			$marksheet = new markSheet();
 			$sid = $_SESSION['marksheet_holder'];
