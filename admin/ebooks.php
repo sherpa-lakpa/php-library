@@ -1,8 +1,7 @@
 <?php
   include_once('session.php');
   include_once('header.php');
-  include_once('class.ManageBooks.php');
-  include_once('manage.books.php');
+  include_once('manage/manage.ebooks.php');
 ?>
 
 <div class="main_content"><center>
@@ -33,7 +32,7 @@
     	<td><select name="category">
 				<option value="">Select</option>
 				<?php
-				$book = new ManageBooks;
+				$book = new ManageEbooks;
 				$result = $book->GetCat();
 				foreach ($result as $key => $value) {
 				echo '<option value="'.$value['name'].'">'.$value['name'].'</option>';
@@ -73,7 +72,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
     <?php
     if(!isset($_GET['ename'])){
 
@@ -81,6 +79,7 @@
     {
       foreach ($list_ebook as $key => $value) {
         ?>
+        <tr>
         <td><?php echo $value['eid']; ?></td>
         <td><?php echo $value['name']; ?></td>
         <td><?php echo $value['subject']; ?></td>
@@ -88,7 +87,42 @@
          ?></td>
         <td>
         <a href="edit_ebook.php?eid=<?php echo $value['eid'];?>"><button>Edit</button></a>
-        <a href="add_ebooks.php?delEbook=<?php echo $value['eid'];?>"><button>Delete</button></a>
+         <input id="txt_delete<?php echo $value['eid']; ?>" type="hidden" value="<?php echo $value['eid']; ?>">
+          <button id="btn_delete<?php echo $value['eid']; ?>" value="<?php echo $value['eid']; ?>">Delete</button>
+          <script>
+  //on the click of the submit button 
+$("#btn_delete<?php echo $value['eid']; ?>").click(function(){
+
+if (confirm("Do want to Delete Ebook <?php echo $value['name']; ?>?") == true) {
+ var delEbook = $('#txt_delete<?php echo $value['eid']; ?>').val();
+ // make the postdata
+ // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
+ // alert(postData);
+ var myData={"delEbook":delEbook};
+ //call your .php script in the background, 
+ //when it returns it will call the success function if the request was successful or 
+ //the error one if there was an issue (like a 404, 500 or any other error status)
+ $.ajax({
+    url : "ebooks.php",
+    type: "GET",
+    data : myData,
+    success: function(data,status,xhr)
+     {
+        //if success then just output the text to the status div then clear the form inputs to prepare for new data
+        $("#status_text").html(data);
+        location.reload();
+         }
+
+}); 
+ 
+                                    
+} else {
+    x = "You pressed Cancel!";
+}
+document.getElementById("demo").innerHTML = x;
+ 
+}); 
+</script>
         </td>
         </tr>
         <?php

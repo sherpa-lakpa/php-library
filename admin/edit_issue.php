@@ -1,8 +1,8 @@
 <?php
   include_once('session.php');
   include_once('header.php');
-  include_once('class.ManageIssue.php');
-  include_once('manage.issues.php');
+  include_once('class/class.ManageIssue.php');
+  include_once('manage/manage.issues.php');
 ?>
 
 <div class="main_content"><center>

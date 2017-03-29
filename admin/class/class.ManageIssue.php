@@ -23,7 +23,7 @@
 			return $counts;
 		}
 		function listIssue($limit){
-			$query = $this->linker->query("SELECT tid,issuedate,fname,name,submission,s_id,b_id FROM issues,student,books WHERE sid=s_id AND bid=b_id ORDER BY tid DESC $limit");
+			$query = $this->linker->query("SELECT * FROM issues,student,books WHERE sid=s_id AND bid=b_id ORDER BY tid DESC $limit");
 			$counts = $query->rowCount();
 			if($counts >= 1){
 				$result = $query->fetchAll();
@@ -51,6 +51,17 @@
 			$query = $this->linker->query("DELETE FROM issues WHERE tid='$tid'");
 			$count = $query->rowCount();
 			return $count;
+		}
+
+		function searchIssue($id){
+			$query = $this->linker->query("SELECT * FROM issues,student,books WHERE sid=s_id AND bid=b_id AND issuedate LIKE('%$id%') OR sid=s_id AND bid=b_id AND submission LIKE('%$id%') LIMIT 0,6");
+			$counts = $query->rowCount();
+			if($counts > 0){
+				$result = $query->fetchAll();
+			}else{
+				$result = $counts;
+			}
+			return $result;
 		}
 
 	}

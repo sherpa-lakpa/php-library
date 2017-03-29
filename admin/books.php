@@ -1,8 +1,7 @@
 <?php
   include_once('session.php');
   include_once('header.php');
-  include_once('class.ManageBooks.php');
-  include_once('manage.books.php');
+  include_once('manage/manage.books.php');
 ?>
 
 <div class="main_content" onClick="avoid()"><center>
@@ -104,7 +103,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
       <?php
       if(!isset($_GET['bname'])){
 
@@ -112,6 +110,7 @@
       {
         foreach ($list_book as $key => $value) {
           ?>
+          <tr>
           <td><?php echo $value['bid']; ?></td>
           <td><?php echo $value['name']; ?></td>
           <td><?php echo $value['author']; ?></td>
@@ -122,7 +121,43 @@
            ?></td>
           <td>
           <a href="edit_book.php?bid=<?php echo $value['bid'];?>"><button>Edit</button></a>
-          <a href="add_books.php?delBook=<?php echo $value['bid'];?>"><button>Delete</button></a>
+          
+          <input id="txt_delete<?php echo $value['bid']; ?>" type="hidden" value="<?php echo $value['bid']; ?>">
+          <button id="btn_delete<?php echo $value['bid']; ?>" value="<?php echo $value['bid']; ?>">Delete</button>
+          <script>
+  //on the click of the submit button 
+$("#btn_delete<?php echo $value['bid']; ?>").click(function(){
+
+if (confirm("Do want to Delete book <?php echo $value['name']; ?>?") == true) {
+ var delBook = $('#txt_delete<?php echo $value['bid']; ?>').val();
+ // make the postdata
+ // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
+ // alert(postData);
+ var myData={"delBook":delBook};
+ //call your .php script in the background, 
+ //when it returns it will call the success function if the request was successful or 
+ //the error one if there was an issue (like a 404, 500 or any other error status)
+ $.ajax({
+    url : "books.php",
+    type: "GET",
+    data : myData,
+    success: function(data,status,xhr)
+     {
+        //if success then just output the text to the status div then clear the form inputs to prepare for new data
+        $("#status_text").html(data);
+        location.reload();
+         }
+
+}); 
+ 
+                                    
+} else {
+    x = "You pressed Cancel!";
+}
+document.getElementById("demo").innerHTML = x;
+ 
+}); 
+</script>
           </td>
           </tr>
           <?php

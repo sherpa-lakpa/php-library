@@ -1,13 +1,11 @@
 <?php
   include_once('session.php');
   include_once('header.php');
-  include_once('class.ManageBooks.php');
-  include_once('manage.books.php');
+  include_once('manage/manage.students.php');
 ?>
 
 <div class="main_content">
 <div class="displaycontainer"><Center>
-
   <img src="../gallery/logo/file.png" style="height:45px;width:45px;" id="search_image" onClick="search()">
     <section id="search">
       <form method="get" action="#" class="searching" >
@@ -35,7 +33,7 @@
   <tbody>
     <tr>
     <?php
-    if($_GET['sname'] == ""){
+    if(!isset($_GET['sname'])){
 
     if($list_student !== 0)
     {
@@ -58,7 +56,42 @@
           </div>
         </td>-->
         <td>
-        <a href="list_student.php?delete=<?php echo $value['id'];?>"><button>Delete</button></a>
+          <input id="txt_delete<?php echo $value['sid']; ?>" type="hidden" value="<?php echo $value['sid']; ?>">
+          <button id="btn_delete<?php echo $value['sid']; ?>" value="<?php echo $value['sid']; ?>">Delete</button>
+          <script>
+  //on the click of the submit button 
+$("#btn_delete<?php echo $value['sid']; ?>").click(function(){
+
+if (confirm("Do want to Delete book <?php echo $value['fname']; ?>?") == true) {
+ var deleteStu = $('#txt_delete<?php echo $value['sid']; ?>').val();
+ // make the postdata
+ // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
+ // alert(postData);
+ var myData={"deleteStu":deleteStu};
+ //call your .php script in the background, 
+ //when it returns it will call the success function if the request was successful or 
+ //the error one if there was an issue (like a 404, 500 or any other error status)
+ $.ajax({
+    url : "student.php",
+    type: "GET",
+    data : myData,
+    success: function(data,status,xhr)
+     {
+        //if success then just output the text to the status div then clear the form inputs to prepare for new data
+        $("#status_text").html(data);
+        location.reload();
+         }
+
+}); 
+ 
+                                    
+} else {
+    x = "You pressed Cancel!";
+}
+document.getElementById("demo").innerHTML = x;
+ 
+}); 
+</script>
         </td>
         </tr>
         <?php

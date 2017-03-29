@@ -60,7 +60,7 @@ window.onclick=function(event)
   <?php
     include_once('session.php');
 
-    include_once('class.admin.php');
+    include_once('class/class.admin.php');
     $init = new ManageDashbord();
   ?>
 <div class="wrapper">
@@ -76,7 +76,7 @@ window.onclick=function(event)
     <a href="../libs/logout.php">Logout<img src="../gallery/logo/poweroff.png"></a>
     </div>
   </div>
-  <section id="issues" style="color:white;float:right;"> <a href="add_issues.php"><img src="../gallery/logo/databasee.png"><section style="color:white;background:red;border-radius:100%;float:right;margin-top:15px;font-size:15px;padding:5px;text-align:center;margin-right:5px; "><b><?php echo $init->countIssues(); ?></b>
+  <section id="issues" style="color:white;float:right;"> <a href="issues.php"><img src="../gallery/logo/databasee.png"><section style="color:white;background:red;border-radius:100%;float:right;margin-top:15px;font-size:15px;padding:5px;text-align:center;margin-right:5px; "><b><?php echo $init->countIssues(); ?></b>
 </section></a></section>
 </div>
   <div class="sidebar">
@@ -87,10 +87,10 @@ window.onclick=function(event)
            <section><?php echo $_SESSION['todo_name']; ?></section>
        </li></a>
 
-     <a href="list_students.php">  <li><img src="../gallery/logo/user-list.png">STUDENTS</li></a>
-       <a href="add_books.php"><li><img src="../gallery/logo/notebook1.png">BOOKS </li></a>
-       <a href="add_ebooks.php"><li><img src="../gallery/logo/studiess.png">EBOOKS</li></a>
-       <a href="add_notes.php"><li><img src="../gallery/logo/copy.png">NOTES</li></a>
+     <a href="students.php">  <li><img src="../gallery/logo/user-list.png">STUDENTS</li></a>
+       <a href="books.php"><li><img src="../gallery/logo/notebook1.png">BOOKS </li></a>
+       <a href="ebooks.php"><li><img src="../gallery/logo/studiess.png">EBOOKS</li></a>
+       <a href="notes.php"><li><img src="../gallery/logo/copy.png">NOTES</li></a>
 
    </ul>
   </div>

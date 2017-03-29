@@ -1,5 +1,5 @@
 <?php
-	include_once('class.ManageIssue.php');
+	include_once('class/class.ManageIssue.php');
 	$init = new ManageIssue();
 
 	if(isset($_GET['tid']))
@@ -8,6 +8,7 @@
 	    $list_issue = $init->listIdIssue($tid);
 	}else{
 	  	$count = $init->countIssue();
+      echo $count;
 
         if(isset($_GET['page'])){ // This filter only get variables
           $page = preg_replace("#[^0-9]#","",$_GET['page']);
@@ -38,11 +39,11 @@
         if($lastPage != 1){
           if($page != $lastPage){
           $next = $page+1;
-          $pagination.= '<a href="add_issues.php?page='.$next.'">Next</a>';
+          $pagination.= '<a href="issues.php?page='.$next.'">Next</a>';
           }
           if($page != 1){
           $prev = $page-1;
-          $pagination.= '<a href="add_issues.php?page='.$prev.'">Previous</a>';
+          $pagination.= '<a href="issues.php?page='.$prev.'">Previous</a>';
           }
         }
 
@@ -91,7 +92,7 @@
     if($delete == 1)
     {
       $success = 'You have deleted it sucessdully';
-      header('Location: add_issues.php');
+      header('Location: issues.php');
     }
     else
     {
@@ -102,27 +103,26 @@
 
   if (isset($_GET['idate'])) {
     if ($_GET['idate'] == "") {
-      header('Location: add_issues.php');
+      header('Location: issues.php');
     }
-    $search_i = $_GET['idate'];
 
+    $search_i = $_GET['idate'];
+    
     if($search_i != ""){
 
-    mysql_connect('localhost','root','');
-    mysql_select_db('library');
-
-    $res = mysql_query("SELECT tid,issuedate,fname,name,submission,s_id,b_id FROM issues,student,books WHERE sid=s_id AND bid=b_id AND issuedate LIKE('%$search_i%') OR sid=s_id AND bid=b_id AND submission LIKE('%$search_i%') LIMIT 0,6");
+    $result = $init->searchIssue($search_i);
 
     $searched_i = "";
 
-    while($value=mysql_fetch_array($res)){
-      $searched_i .= '<tr><td>'.$value['tid'].'</td>
+    foreach ($result as $key => $value) {
+        $searched_i .= '<tr><td>'.$value['tid'].'</td>
         <td>'.$value['issuedate'].'</td>
         <td>'.$value['fname'].'</td>
+        <td>'.$value['name'].'</td>
         <td>'.$value['submission'].'</td>
         <td>
         <a href="edit_issue.php?tid='.$value['tid'].'"><button>Edit</button></a>
-        <a href="add_issues.php?delIssue='.$value['tid'].'"><button>Delete</button></a>
+        <a href="issues.php?delIssue='.$value['tid'].'"><button>Delete</button></a>
         </td></tr>';
     }
     if($searched_i == ""){

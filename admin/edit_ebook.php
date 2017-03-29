@@ -1,8 +1,7 @@
 <?php
   include_once('session.php');
   include_once('header.php');
-  include_once('class.ManageBooks.php');
-  include_once('manage.books.php');
+  include_once('manage/manage.ebooks.php');
 ?>
 
 <div class="main_content"><center>
