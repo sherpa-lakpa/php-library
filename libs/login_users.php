@@ -65,7 +65,6 @@ date_default_timezone_set('Asia/Kathmandu');
 
 	if(isset($_POST['logStu']))
 	{
-		session_start();
 		include_once('class.student.php');
 		$username = $_POST['username'];
 		$password = $_POST['password'];
@@ -76,6 +75,7 @@ date_default_timezone_set('Asia/Kathmandu');
 		}
 		else{
 			if($username == 'admin' && $password == 'admin'){
+					session_start();
 					$_SESSION['todo_name'] = 'admin';
 					header('Location: admin/');
 			}
@@ -87,6 +87,7 @@ date_default_timezone_set('Asia/Kathmandu');
 			{
 				$make_session = $login_stu->listStu($username);
 					foreach ($make_session as $stuSession) {
+						session_start();
 						$_SESSION['todo_name'] = $stuSession['fname'];
 						$_SESSION['std_id'] = $stuSession['sid'];
 						if(isset($_SESSION['todo_name']))
