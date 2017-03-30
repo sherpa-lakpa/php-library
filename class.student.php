@@ -27,7 +27,7 @@
 
 		function registerStu($image,$email,$password,$fname,$program,$year,$roll_no,$address,$mobile,$date,$time,$ip_address)
 		{
-			$query = $this->linker->prepare("INSERT INTO student (image,email,password,fname,program,year,roll_no,address,mobile,reg_date,reg_time,ip_address) 
+			$query = $this->linker->prepare("INSERT INTO student (image,email,password,fname,program,year,roll_no,address,mobile,reg_date,reg_time,ip_address)
 				VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 			$values = array($image,$email,$password,$fname,$program,$year,$roll_no,$address,$mobile,$date,$time,$ip_address);
 			$query->execute($values);

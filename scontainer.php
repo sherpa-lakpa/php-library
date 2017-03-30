@@ -5,6 +5,7 @@
 					include_once('manage.feedbacks.php');
 				?>
 				<div  class="scontainer">
+					<!--FEEDBACK-BEGINS-->
 					<div id="feedback" class="grid60" >
 					<center>
 								<section style="font-size:30px;font-weight:bolder;text-align:center;" id="heading">FEEDBACK</section><br>
@@ -54,7 +55,10 @@
 								</div>
 								</div>
 					</div>
-				<!-- END OF FEEDBACK -->	
+				<!-- END OF FEEDBACK -->
+
+
+
 	<div style="position:absolute;left:185px;top:30px;">
 <?php
 if(isset($_SESSION['todo_name'])){
@@ -131,9 +135,10 @@ if(isset($_SESSION['todo_name'])){
 <!--END OF FULL INFO.-->
 	<!-- STARTING FOR EDITING OF PROFILE-->
 			</table>
-			<table class="loggedin_table grid80" id="edit_profile">
+			<div id="editdiv">
+			<table class="loggedin_table grid80" id="edit_profile" >
 				<tr>
-					<!--<img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:-435px;right:-388px;" id="close">-->
+					<img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:20;left:460px;display:none;" id="editclose">
 					<td colspan="2" style="text-align:center;font-size:20px;border-radius:5px 5px 0px 0px;box-shadow:none;">STUDENT INFORMATION(edit)</td>
 				</tr>
 				<tr>
@@ -141,37 +146,42 @@ if(isset($_SESSION['todo_name'])){
 				</tr>
 				<tr>
 					<td>Student Id.:</td>
-					<td><input type="text"><?php echo $sid; ?></td>
+					<td><?php echo "<input type='text' value=".$sid."></td>";?>
 
 				</tr>
 				<tr>
 					<td>Name:</td>
-					<td><?php echo $fname; ?></td>
+					<td><?php echo "<input type='text' value=".$fname."></td>"; ?>
 				</tr>
 				<tr>
 						<td>Program:</td>
-				<td><?php echo $program; ?></td>
+				<td><?php echo "<input type='text' value=".$program."</td>"; ?>
 			</tr>
 			<tr>
 				<td>Year:</td>
-				<td><?php echo $year; ?></td>
+				<td><?php echo "<input type='number' value=".$year."</td>"; ?>
 			</tr>
 			<tr>
 				<td>Roll No.:</td>
-				<td><?php echo $roll_no; ?></td>
+				<td><?php echo "<input type='number' value=".$roll_no."</td>"; ?>
 			</tr>
 			<tr>
 				<td>Mobile No.:</td>
-				<td><?php echo $mobile; ?></td>
+				<td><?php echo "<input type='number' value=".$mobile."</td>"; ?>
 			</tr>
+			<tr>
+				<td colspan="2" style="text-align:center;"><?php echo"<input type='submit' value='Update'>"; ?>
+				</tr>
 		</table>
+
+	</div>
 <!--END OF EDITTING OF PROFILE-->
 
 			<div id="top_display">
-				<div class="first" style="width:100%;height:85px;float:left;border:5px solid #07602F;border-top:0px;border-left:0px;border-right:0px;">
+				<div class="first" style="width:100%;height:85px;float:left;border:5px solid #07602F;border-top:0px;border-left:0px;border-right:0px;border-radius:0px 0px 100px 100px ;">
 
 				</div>
-				<div style="width:100%;height:50px;float:left;margin-left:30px;">
+				<div style="width:100%;height:50px;float:left;margin-left:30px;" class="top_display1">
 
 
 			</div>
@@ -180,13 +190,13 @@ if(isset($_SESSION['todo_name'])){
 
 			</div>
 			<button onClick="hello()" id="top_button1">Full Info.</button>
-			<a href="result.php"><button id="top_button1">Marksheet</button></a>
-			<button onClick="edit_profile()" id="top_button2">Edit</button>
+			<a href="result.php"><button id="mbutton">Marksheet</button></a>
+			<button onClick="edit_profile()" id="editbutton">Edit</button>
 
 <!--LOGOUT BUTTON-->
 			<?php
 					if(isset($_SESSION['todo_name'])){
-					  echo '<a href="libs/logout.php"><div style="float:left;color:red;margin-left:5px;background:rgba(0,0,0,0.7);font-size:12px;padding:5px;box-shadow:0px 2px 5px black;border-radius:5px;cursor:pointer;position:relative;top:-7px;right:-360px;" id="hello_logout">LogOut</div></a>';
+					  echo '<a href="libs/logout.php"><div style="float:left;color:red;margin-left:5px;background:rgba(0,0,0,0.7);font-size:12px;padding:5px;box-shadow:0px 2px 5px black;border-radius:5px;cursor:pointer;position:relative;top:-7px;right:-410px;" id="hello_logout">LogOut</div></a>';
 					}
 					?>
 
@@ -201,8 +211,8 @@ if(isset($_SESSION['todo_name'])){
 		$listStuIssue = $init->listStuIssue($sid);
 
 ?>
-
-			<table style="margin-top:110px;" class="issued_number">
+<div id="hide1">
+			<table style="margin-top:110px;" class="issued_number" id="table1">
 				<tr>
 				<td>No. of books issued:</td>
 				<td id="book_number"><?php echo $totalStuIssue; ?></td>
@@ -212,7 +222,7 @@ if(isset($_SESSION['todo_name'])){
 			<?php
 				if($listStuIssue == 0){
 					?>
-					<table class="issued_book">
+					<table class="issued_book" id="table2">
 
 					<tr>
 							<td rowspan="4" style="" ><img src="image/demo.jpg" id="book_image"></td>
@@ -236,7 +246,7 @@ if(isset($_SESSION['todo_name'])){
 					foreach ($listStuIssue as $key => $listB) {
 			?>
 
-			<table class="issued_book">
+			<table class="issued_book" id="table3">
 
 					<tr>
 							<td rowspan="4" style="" ><img src="<?php echo $listB['image']; ?>" id="book_image"></td>
@@ -258,7 +268,29 @@ if(isset($_SESSION['todo_name'])){
 			<?php
 				}
 			?>
+			<!-- DESIGN 2 -for issued books-->
+			<table class="issued_book1" style="border:2px solid black;">
+				<tr >
+					<th>Book Name</th>
+					<th>Author</th>
+					<th>Issued date</th>
+					<th>Return date</th>
+				</tr>
+				<tr>
+					<td>asd</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>aside</td><td></td><td></td><td></td></tr>
+					<tr><td>asd</td><td></td><td></td><td></td></tr>
+					<tr><td>asd</td><td></td><td></td><td></td></tr>
+					<tr><td>asd</td><td></td><td></td><td></td></tr>
+					<tr><td>asd</td><td></td><td></td><td></td></tr>
+			</table>
 
+</div>
 			</div><?php include_once('footer.php');?>
           </div>
   </div>
@@ -271,12 +303,14 @@ function hello()
 		document.getElementById('profile').style.display="inline-block";
 		document.getElementById('top_display').style.display="none";
 			document.getElementById('top_button1').style.display="none";
-			//document.getElementById('top_button2').style.display="none";
+			document.getElementById('editbutton').style.display="none";
 	document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
-
-			document.getElementById('top_button2').style.display="inline";
+			//	document.getElementById('editbutton').style.display="inline";
 		//document.getElementById('close').style.display="none";
+		document.getElementById('hide1').style.display="none";
+		document.getElementById('mbutton').style.display="none";
+
 
 	};
 	function cancel()
@@ -286,13 +320,16 @@ function hello()
 			document.getElementById('profile').style.display="none";
 			document.getElementById('top_display').style.display="block";
 		document.getElementById('top_button1').style.display="inline";
-		document.getElementById('top_button2').style.display="inline";
+		document.getElementById('editbutton').style.display="inline";
 		document.getElementById('student_picture').style.display="block";
 document.getElementById('hello').style.display="block";
 document.getElementById('feedback').style.display="none";
 document.getElementById('edit_profile').style.display="none";
+document.getElementById('editclose').style.display="none";
 
-	document.getElementById('top_button2').style.display="none";
+	//document.getElementById('editbutton').style.display="none";
+	document.getElementById('hide1').style.display="inline";
+	document.getElementById('mbutton').style.display="inline";
 
 	};
 	function edit_profile()
@@ -301,18 +338,24 @@ document.getElementById('edit_profile').style.display="none";
 		document.getElementById('edit_profile').style.display="inline";
 		document.getElementById('top_display').style.display="none";
 			document.getElementById('top_button1').style.display="none";
-			document.getElementById('top_button2').style.display="none";
+			document.getElementById('editbutton').style.display="none";
 	document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
+		document.getElementById('editdiv').style.display="inline";
+		document.getElementById('hello_logout').style.display="none";
+		document.getElementById('mbutton').style.display="none";
 
 			document.getElementById('profile').style.display="none";
+			document.getElementById('hide1').style.display="none";
+			document.getElementById('editclose').style.display="inline";
+
 	}
 	function feedback()
 	{
 		document.getElementById('feedback').style.display="inline";
 		document.getElementById('top_display').style.display="none";
 			document.getElementById('top_button1').style.display="none";
-			document.getElementById('top_button2').style.display="none";
+			document.getElementById('editbutton').style.display="none";
 	document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
 	}

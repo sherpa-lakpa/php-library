@@ -1086,8 +1086,13 @@ input
 	border-top:0px;
 	border-right:0px;
 	border-left:0px;
+	border-radius:0px 0px 150px 150px;
 }
 .scontainer #top_display:hover
+{
+	background:rgba(0,0,0,0.6);
+}
+.scontainer #top_display1:hover
 {
 	background:rgba(0,0,0,0.6);
 }
@@ -1122,7 +1127,7 @@ input
 
 }
 
-#top_button1
+#top_button1,#mbutton
 {
 	position:relative;
 	top:45px;
@@ -1138,12 +1143,13 @@ input
 	margin:5px;
 	outline:0;
 }
-#top_button2
+#editbutton
 {
-	position:absolute	;
-	top:5px;
-	left:60px;
-	padding:10px 20px 10px 20px;
+	position:relative	;
+	top:-22px;
+	left:-120px;
+
+/*	padding:10px 20px 10px 20px;
 	border-radius:3px;
 	border:0px;
 	z-index:10;
@@ -1151,10 +1157,13 @@ input
 	cursor:pointer;
 	background:#07602F;
 	color:white;
-	margin:5px;
-	display:none;
-		outline:0;
-}
+	margin:3px;
+	//display:none;
+		outline:0;*/
+
+		color:red;margin-left:5px;background:rgba(0,0,0,0.7);font-size:12px;padding:5px 10px 5px 10px ;
+		box-shadow:0px 2px 5px black;border-radius:5px;cursor:pointer;border:0px;
+		}
 .scontainer .issued_number
 {
 	background:rgba(255,255,255,0.05);
@@ -1197,7 +1206,7 @@ input
 	background:rgba(255,255,255,0.2);
 	position:relative;
 	top:-40px;
-	left:50px;
+	left:10px;
 }
 .scontainer #edit_profile
 {
@@ -1205,8 +1214,8 @@ input
 	border-radius:5px;
 	color:#272822;
 	//margin:25px;
-	margin-top:10px;
-	padding:10px;
+	margin-top:5px;
+	padding:5px 10px 5px 10px;
 	//border:5px groove #BFD0C6;
 	box-shadow:0px 2px 20px black;
 	border-spacing:20px 1px;
@@ -1216,7 +1225,14 @@ input
 	background:rgba(255,255,255,0.2);
 
 }
-
+.scontainer #editdiv
+{
+		/*background:black;
+		overflow:scroll;
+		height:600px;*/
+		display:none;
+		height:auto;
+}
 .scontainer #profile tr:nth-child(odd)
 {
 	background:rgba(0,0,0,0.5);
@@ -1248,7 +1264,7 @@ input
 }
 .scontainer #edit_profile tr td
 {
-	padding:10px 20px 10px 30px;
+	padding:2px 20px 2px 30px;
 	text-align:right;
 	//border:1px solid white;
 
@@ -1364,6 +1380,31 @@ input
 {
 	border:0px;
 }
+
+.scontainer .issued_book1
+{
+	margin-top:30px;
+	width:89%;
+	background:rgba(255,255,255,0.2);
+	color:black;
+	box-shadow:0px 5px 15px black;
+	border-radius:4px;
+	font-size:13px;
+	font-weight:bolder;
+	border:1px solid #07602F;
+}
+
+.scontainer .issued_book1 tr td
+{
+	padding:2px 20px 2px 20px;
+	font-size:13;
+	overflow:hidden;
+	background:rgba(0,0,0,0);
+	box-shadow:0px 0px 0px black;
+	border-radius:0px;
+	border:1px solid black;
+	border-collapse:collapse;
+}
 .container1:hover
 {
 
@@ -1428,7 +1469,7 @@ input
 	float:left;
 	margin:10px;
 	position:absolute;
-	top:23px;
+	top:113px;
 	right:435px;
 }
 
@@ -1479,7 +1520,7 @@ input
 	transition:all 0.6s;
 	padding:0px;
 	position:absolute;
-	top:25px;
+	top:113px;
 	right:440px;
 }
 
@@ -1490,7 +1531,7 @@ input
 	//background:red;
 
 	position:absolute;
-	top:323px;
+	top:413px;
 	right:442px;
 	z-index:10;
 	//background:Red;
