@@ -111,7 +111,7 @@
 
     if($edit == 1)
     {
-      header('Location: add_books.php');
+      header('Location: books.php');
     }else{
       $error = 'There was an error';
     }

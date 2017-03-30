@@ -62,5 +62,19 @@
 				$counts = $query->rowCount();
 				return $counts;
 			}
+			function searchStu($sid){
+				
+				$query = $this->linker->query("SELECT * FROM student WHERE fname LIKE('%$sid%') LIMIT 0,6");
+				
+				$counts = $query->rowCount();
+				if($counts > 0)
+				{
+					$result = $query->fetchAll();
+				}
+				else{
+					$result = $counts;
+				}
+				return $result;
+			}
 		}
 ?>

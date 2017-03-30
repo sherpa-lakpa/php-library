@@ -80,7 +80,7 @@
     $edit = $init->editIssue($tid,$issuedate,$submission,$b_id,$s_id);
     if($edit == 1)
     {
-      header('Location: add_issues.php');
+      header('Location: issues.php');
     }else{
       $error = 'There was an error';
     }

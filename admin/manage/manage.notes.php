@@ -103,7 +103,7 @@
     $edit = $init->editNote($id,$name,$subject,$category,$target);
     if($edit == 1)
     {
-      header('Location: add_notes.php');
+      header('Location: notes.php');
     }else{
       $error = 'There was an error';
     }

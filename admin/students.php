@@ -31,14 +31,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
     <?php
+
     if(!isset($_GET['sname'])){
 
     if($list_student !== 0)
     {
       foreach ($list_student as $key => $value) {
         ?>
+         <tr>
         <td><?php echo $value['sid']; ?></td>
         <td><?php echo $value['fname']; ?></td>
         <td><?php echo $value['email']; ?></td>
@@ -72,7 +73,7 @@ if (confirm("Do want to Delete book <?php echo $value['fname']; ?>?") == true) {
  //when it returns it will call the success function if the request was successful or 
  //the error one if there was an issue (like a 404, 500 or any other error status)
  $.ajax({
-    url : "student.php",
+    url : "students.php",
     type: "GET",
     data : myData,
     success: function(data,status,xhr)

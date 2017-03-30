@@ -59,20 +59,18 @@
    // Search Algoriths
 
   if (isset($_GET['sname'])) {
-    if ($_GET['bname'] == "") {
+    if ($_GET['sname'] == "") {
       header('Location: students.php');
     }
     $search = $_GET['sname'];
     if($search != ""){
 
-    mysql_connect('localhost','root','');
-    mysql_select_db('library');
-
-    $res = mysql_query("SELECT * FROM student WHERE fname LIKE('%$search%') LIMIT 0,6");
+    $result = $init->searchStu($search);
 
     $searched_s = "";
 
-    while($value=mysql_fetch_array($res)){
+    foreach ($result as $key => $value) {
+
       $searched_s .= '<tr><td>'.$value['sid'].'</td>
         <td>'.$value['fname'].'</td>
         <td>'.$value['email'].'</td>
@@ -91,3 +89,17 @@
     }
   }
 }
+
+  if(isset($_GET['deleteStu'])){
+    $id = $_GET['deleteStu'];
+    $delete = $init->deleteStu($id);
+    if($delete == 1)
+    {
+      $success = 'You have deleted it sucessfully';
+      header('Location: students.php');
+    }
+    else
+    {
+      $error = 'Sorry there was an error';
+    }
+  }

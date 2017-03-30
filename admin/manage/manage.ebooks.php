@@ -104,7 +104,7 @@
     $edit = $init->editEbook($id,$name,$subject,$category,$target);
     if($edit == 1)
     {
-      header('Location: add_ebooks.php');
+      header('Location: ebooks.php');
     }else{
       $error = 'There was an error';
     }

@@ -33,7 +33,7 @@
 				<td><select name="category">
 							<option value="<?php echo $values['category']; ?>"><?php echo $values['category']; ?></option>
 							<?php
-							$book = new ManageBooks;
+							$book = new ManageEbooks;
 							$result = $book->GetCat();
 							foreach ($result as $key => $value) {
 							echo '<option value="'.$value['name'].'">'.$value['name'].'</option>';
@@ -42,8 +42,9 @@
 						</select></td>
 		    </tr>
 		    <tr>
-		      <td>
-					Choose file:</td><td> <input type="file" name="file" /></td>
+		      	<td>
+					Choose file:</td><td> <input type="file" name="file" />
+				</td>
 		    </tr>
 		    <tr>
 		    <td colspan="2">

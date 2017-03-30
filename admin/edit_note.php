@@ -1,7 +1,6 @@
 <?php
   include_once('session.php');
   include_once('header.php');
-  include_once('class/class.ManageBooks.php');
   include_once('manage/manage.notes.php');
 ?>
 
@@ -34,7 +33,7 @@
 				<td><select name="category">
 							<option value="<?php echo $values['category']; ?>"><?php echo $values['category']; ?></option>
 							<?php
-							$book = new ManageBooks;
+							$book = new ManageNotes;
 							$result = $book->GetCat();
 							foreach ($result as $key => $value) {
 							echo '<option value="'.$value['name'].'">'.$value['name'].'</option>';
