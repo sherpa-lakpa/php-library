@@ -43,6 +43,7 @@ date_default_timezone_set('Asia/Kathmandu');
 						foreach ($make_session as $stuSession) {
 							$_SESSION['todo_name'] = $stuSession['fname'];
 							$_SESSION['std_mob'] = $stuSession['mobile'];
+							$_SESSION['userImage'] = $stuSession['image'];
 							if(isset($_SESSION['todo_name']))
 							{
 								header('Location: index.php');
@@ -90,6 +91,7 @@ date_default_timezone_set('Asia/Kathmandu');
 						session_start();
 						$_SESSION['todo_name'] = $stuSession['fname'];
 						$_SESSION['std_id'] = $stuSession['sid'];
+						$_SESSION['userImage'] = $stuSession['image'];
 						if(isset($_SESSION['todo_name']))
 						{
 							header('Location: index.php');

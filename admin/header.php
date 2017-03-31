@@ -82,7 +82,7 @@ window.onclick=function(event)
   <div class="sidebar">
     <ul>
        <li class="profile"><a href="#">PROFILE<br>
-           <img src="../gallery/avatar-3.png"><br>
+           <img src="../<?php echo $_SESSION['userImage']; ?>"><br>
            <span class="text-red">ADMIN</span>
            <section><?php echo $_SESSION['todo_name']; ?></section>
        </li></a>
