@@ -46,7 +46,7 @@
 			return $counts;
 		}
 		function listStuIssue($sid){
-			$query = $this->linker->query("SELECT tid,issuedate,name,image,submission FROM issues,books WHERE s_id='$sid' AND bid=b_id");
+			$query = $this->linker->query("SELECT bid,tid,issuedate,name,image,submission FROM issues,books WHERE s_id='$sid' AND bid=b_id");
 			$counts = $query->rowCount();
 			if($counts >= 1){
 				$result = $query->fetchAll();
@@ -54,6 +54,12 @@
 				$result = $counts;
 			}
 			return $result;
+		}
+
+		function delIssue($issue_id){
+			$query = $this->linker->query("DELETE FROM issues WHERE tid='$issue_id'");
+			$counts = $query->rowCount();
+			return $counts;
 		}
 
 	}

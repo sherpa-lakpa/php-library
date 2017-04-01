@@ -18,7 +18,7 @@
 <img src="../gallery/logo/file.png" style="height:50px;width:50px;cursor:pointer;" id="search_image" onClick="search()">
 
 <table id="admin_table">
-    <form method="post" action="add_books.php" enctype="multipart/form-data">
+    <form method="post" action="#" enctype="multipart/form-data">
       <tr class="trans"><th colspan="2">Adding new books</th></tr>
       <tr>
       <tr>

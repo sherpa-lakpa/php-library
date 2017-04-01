@@ -2,22 +2,27 @@
  include_once('class.ManageUsers.php');
  $init = new ManageUsers();
 
-  if(isset($_POST['add_issues'])){
+  if(isset($_POST['book_id'])){
     $issuedate = date("Y-m-d");
     $submission = $_POST['submission'];
     if($submission == ""){
       $submission = date("Y-m-d"); // Increase date ????
     }
     $s_id = $_POST['s_id'];
-    $b_id = $_POST['b_id'];
+    $b_id = $_POST['book_id'];
 
+    $check = $init->checkBookmark($b_id,$s_id);
 
-    $addIssue = $init->addIssue($issuedate,$submission,$b_id,$s_id);
-      if($addIssue == 1){
-        $success = 'success!';
-      }
-      else{
-          $error = 'Failed to add Issue';
+    echo '<script>alert('.$check.');</script>';
+
+      if ($check < 1) {
+        $addIssue = $init->bookmarkBook($issuedate,$submission,$b_id,$s_id);
+        if($addIssue == 1){
+          $success = 'success!';
+        }
+        else{
+            $error = 'Failed to add Issue';
+        }
       }
     }
 ?>
@@ -51,15 +56,40 @@
 
             	if(isset($student_name)){
             	?>
-                    <form method="post" action="#">
-                    <input type="hidden" name="b_id" id="b_id" value="'.<?php echo $bid; ?>.'" />
-                    <input type="hidden" name="s_id" id="s_id" value="'.<?php echo $student_id; ?>.'" />
-                    <input type="hidden" name="submission" value="" />
-                    <?php
-                    echo '<button name="add_issues">Bookmark</button>
-                    ';?>
-                    </form>
-                    <?php
+
+                <input type="hidden" name="book_id" id="book_id" value="<?php echo $bid; ?>" />
+                <input type="hidden" name="s_id" id="s_id" value="<?php echo $student_id; ?>" />
+                  <button id="add_issues">Bookmark</button>
+          <script>
+  //on the click of the submit button 
+$("#add_issues").click(function(){
+
+ var s_id = $('#s_id').val();
+ var book_id = $('#book_id').val();
+ // make the postdata
+ // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
+ // alert(postData);
+ var myData={"book_id":book_id,"s_id":s_id};
+ //call your .php script in the background, 
+ //when it returns it will call the success function if the request was successful or 
+ //the error one if there was an issue (like a 404, 500 or any other error status)
+ $.ajax({
+    url : "bcontainer.php",
+    type: "POST",
+    data : myData,
+    success: function(data,status,xhr)
+     {
+        //if success then just output the text to the status div then clear the form inputs to prepare for new data
+        $("#status_text").html(data);
+        location.reload();
+        
+         }
+
+}); 
+ 
+}); 
+</script>
+                <?php
             	}
              }
             }
@@ -84,9 +114,12 @@
           <td>Author:</td>
           <td><?php echo $author; ?></td>
         </tr>
-        <tr>
+        <?php 
+        if ($category == "Course") { 
+          ?>
+          <tr>
           <td>Subject:</td>
-          <td><?php	echo $subject; ?></td>
+          <td><?php echo $subject; ?></td>
         </tr>
         <tr>
           <td>Publisher:</td>
@@ -98,16 +131,20 @@
           <td><?php echo $edition; ?></td>
         </tr>
         <tr>
-        <?php
-        if($sem == ""){
-          echo '<td>Category:</td>
+        
+          <td>Semester:</td>
+          <td><?php echo $sem; ?></td>
+        </tr>
+        <?php 
+        echo '<td>Category:</td>
           <td>'.$category.'</td>
         </tr>';
         }else{
-          echo '<td>Semester:</td>
-          <td>'.$sem.'</td>
+          echo '<td>Category:</td>
+          <td>'.$category.'</td>
         </tr>';
-        } ?>
+        }
+        ?>
       </table>
   </div>
       <div class="suggestion">

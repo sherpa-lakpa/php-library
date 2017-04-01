@@ -210,6 +210,13 @@ if(isset($_SESSION['todo_name'])){
 
 		$listStuIssue = $init->listStuIssue($sid);
 
+		if (isset($_POST['book_id'])) {
+
+			$issue_id = $_POST['book_id'];
+			$del = $init->delIssue($issue_id);
+
+		}
+
 ?>
 <div id="hide1">
 			<table style="margin-top:110px;" class="issued_number" id="table1">
@@ -253,7 +260,40 @@ if(isset($_SESSION['todo_name'])){
 					</tr>
 					<tr>
 
-						<td colspan="2"><span class="book_name"><?php echo $listB['name']; ?></span></td>
+						<td colspan="2"><span class="book_name"><?php echo $listB['name']; ?></span>
+
+						 <input type="hidden" name="book_id<?php echo $listB['bid']; ?>" id="book_id<?php echo $listB['bid']; ?>" value="<?php echo $listB['tid']; ?>" />
+						 <button id="del_issues<?php echo $listB['bid']; ?>" style="background: red;color: white; border-radius: 30%;"><h2 style="padding: 0px;margin: 0px;">X</h2></button>
+          <script>
+  //on the click of the submit button 
+$("#del_issues<?php echo $listB['bid']; ?>").click(function(){
+
+ var book_id = $('#book_id<?php echo $listB['bid']; ?>').val();
+ // make the postdata
+ // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
+ // alert(postData);
+ var myData={"book_id":book_id};
+ //call your .php script in the background, 
+ //when it returns it will call the success function if the request was successful or 
+ //the error one if there was an issue (like a 404, 500 or any other error status)
+ $.ajax({
+    url : "scontainer.php",
+    type: "POST",
+    data : myData,
+    success: function(data,status,xhr)
+     {
+        //if success then just output the text to the status div then clear the form inputs to prepare for new data
+        $("#status_text").html(data);
+        location.reload();
+        
+         }
+
+}); 
+ 
+}); 
+</script>
+
+						</td>
 					</tr>
 
 						<td>Issued Date:</td>
@@ -269,26 +309,7 @@ if(isset($_SESSION['todo_name'])){
 				}
 			?>
 			<!-- DESIGN 2 -for issued books-->
-			<table class="issued_book1" style="border:2px solid black;">
-				<tr >
-					<th>Book Name</th>
-					<th>Author</th>
-					<th>Issued date</th>
-					<th>Return date</th>
-				</tr>
-				<tr>
-					<td>asd</td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td>aside</td><td></td><td></td><td></td></tr>
-					<tr><td>asd</td><td></td><td></td><td></td></tr>
-					<tr><td>asd</td><td></td><td></td><td></td></tr>
-					<tr><td>asd</td><td></td><td></td><td></td></tr>
-					<tr><td>asd</td><td></td><td></td><td></td></tr>
-			</table>
+			
 
 </div>
 			</div><?php include_once('footer.php');?>

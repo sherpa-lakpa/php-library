@@ -1,11 +1,18 @@
 <?php
+	include_once('class.ManageUsers.php');
+
+	$init = new ManageUsers();
+
 	$nm = $_GET['nm'];
+
 	if($nm != ""){
-	mysql_connect('localhost','root','toor');
-	mysql_select_db('library');
-	$res = mysql_query("SELECT * FROM ebooks WHERE subject LIKE('%$nm%')");
+
+	$result = $init->searchEbook($nm);
+	
 	echo '<table>';
-	while($row=mysql_fetch_array($res)){
+
+	foreach ($result as $key => $row) {
+
 		echo '<tr>';
 		echo '<td>'; echo $row['name']; echo '</td>';
 		echo '<td>'; echo $row['subject']; echo '</td>';

@@ -83,16 +83,14 @@ function notes()
 }
 function ebooks()
 {
-  var x = document.getElementById('Note-search').value;
-
+  var x = document.getElementById('Ebook-search').value;
   if (x == '') {
     document.getElementById("blist").innerHTML= Initial;
   }else{
-
     xmlhttp=new XMLHttpRequest();
     xmlhttp.open("GET","ebook.php?nm="+document.febook.ebook.value,false);
     xmlhttp.send(null);
-      //alert(data);
+    var data = xmlhttp.responseText;
       if(data != "<table></table>"){
          document.getElementById("blist").innerHTML=xmlhttp.responseText;
       }else{
