@@ -61,6 +61,15 @@
 			$counts = $query->rowCount();
 			return $counts;
 		}
+  		
+  		/* Edit student */
+
+		function editStu($column,$editval,$sid){
+				$query = $this->linker->query("UPDATE student SET $column='$editval' WHERE sid='$sid'");
+				$counts = $query->rowCount();
+
+			 	return $counts;
+			}
 
 	}
 ?>

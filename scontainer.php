@@ -133,48 +133,10 @@ if(isset($_SESSION['todo_name'])){
 					<td><?php echo $mobile; ?></td>
 				</tr>
 <!--END OF FULL INFO.-->
-	<!-- STARTING FOR EDITING OF PROFILE-->
 			</table>
-			<div id="editdiv">
-			<table class="loggedin_table grid80" id="edit_profile" >
-				<tr>
-					<img src="gallery/unchecked.png" onClick="cancel()" style="height:25px;width:25px;cursor:pointer;position:relative;top:20;left:460px;display:none;" id="editclose">
-					<td colspan="2" style="text-align:center;font-size:20px;border-radius:5px 5px 0px 0px;box-shadow:none;">STUDENT INFORMATION(edit)</td>
-				</tr>
-				<tr>
-					<td colspan="2" style="padding:0px;border:0px;text-align:center;" ><?php echo '<img src="'.$image.'" class="studentpicture"><br><br>'; ?></td>
-				</tr>
-				<tr>
-					<td>Student Id.:</td>
-					<td><?php echo "<input type='text' value=".$sid."></td>";?>
 
-				</tr>
-				<tr>
-					<td>Name:</td>
-					<td><?php echo "<input type='text' value=".$fname."></td>"; ?>
-				</tr>
-				<tr>
-						<td>Program:</td>
-				<td><?php echo "<input type='text' value=".$program."</td>"; ?>
-			</tr>
-			<tr>
-				<td>Year:</td>
-				<td><?php echo "<input type='number' value=".$year."</td>"; ?>
-			</tr>
-			<tr>
-				<td>Roll No.:</td>
-				<td><?php echo "<input type='number' value=".$roll_no."</td>"; ?>
-			</tr>
-			<tr>
-				<td>Mobile No.:</td>
-				<td><?php echo "<input type='number' value=".$mobile."</td>"; ?>
-			</tr>
-			<tr>
-				<td colspan="2" style="text-align:center;"><?php echo"<input type='submit' value='Update'>"; ?>
-				</tr>
-		</table>
-
-	</div>
+<!-- STARTING FOR EDITING OF PROFILE-->
+<?php include_once('editStu.php'); ?>
 <!--END OF EDITTING OF PROFILE-->
 
 			<div id="top_display">
@@ -323,9 +285,9 @@ function hello()
 		document.getElementById('hello_logout').style.display="none";
 		document.getElementById('profile').style.display="inline-block";
 		document.getElementById('top_display').style.display="none";
-			document.getElementById('top_button1').style.display="none";
-			document.getElementById('editbutton').style.display="none";
-	document.getElementById('student_picture').style.display="none";
+		document.getElementById('top_button1').style.display="none";
+		document.getElementById('editbutton').style.display="none";
+		document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
 			//	document.getElementById('editbutton').style.display="inline";
 		//document.getElementById('close').style.display="none";
@@ -338,19 +300,19 @@ function hello()
 	{
 
 		document.getElementById('hello_logout').style.display="inline-block";
-			document.getElementById('profile').style.display="none";
-			document.getElementById('top_display').style.display="block";
+		document.getElementById('profile').style.display="none";
+		document.getElementById('top_display').style.display="block";
 		document.getElementById('top_button1').style.display="inline";
 		document.getElementById('editbutton').style.display="inline";
 		document.getElementById('student_picture').style.display="block";
-document.getElementById('hello').style.display="block";
-document.getElementById('feedback').style.display="none";
-document.getElementById('edit_profile').style.display="none";
-document.getElementById('editclose').style.display="none";
+		document.getElementById('hello').style.display="block";
+		document.getElementById('feedback').style.display="none";
+		document.getElementById('edit_profile').style.display="none";
+		document.getElementById('editclose').style.display="none";
 
-	//document.getElementById('editbutton').style.display="none";
-	document.getElementById('hide1').style.display="inline";
-	document.getElementById('mbutton').style.display="inline";
+		//document.getElementById('editbutton').style.display="none";
+		document.getElementById('hide1').style.display="inline";
+		document.getElementById('mbutton').style.display="inline";
 
 	};
 	function edit_profile()
@@ -358,26 +320,26 @@ document.getElementById('editclose').style.display="none";
 		//document.getElementById('hello_logout').style.display="none";
 		document.getElementById('edit_profile').style.display="inline";
 		document.getElementById('top_display').style.display="none";
-			document.getElementById('top_button1').style.display="none";
-			document.getElementById('editbutton').style.display="none";
-	document.getElementById('student_picture').style.display="none";
+		document.getElementById('top_button1').style.display="none";
+		document.getElementById('editbutton').style.display="none";
+		document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
 		document.getElementById('editdiv').style.display="inline";
 		document.getElementById('hello_logout').style.display="none";
 		document.getElementById('mbutton').style.display="none";
 
-			document.getElementById('profile').style.display="none";
-			document.getElementById('hide1').style.display="none";
-			document.getElementById('editclose').style.display="inline";
+		document.getElementById('profile').style.display="none";
+		document.getElementById('hide1').style.display="none";
+		document.getElementById('editclose').style.display="inline";
 
 	}
 	function feedback()
 	{
 		document.getElementById('feedback').style.display="inline";
 		document.getElementById('top_display').style.display="none";
-			document.getElementById('top_button1').style.display="none";
-			document.getElementById('editbutton').style.display="none";
-	document.getElementById('student_picture').style.display="none";
+		document.getElementById('top_button1').style.display="none";
+		document.getElementById('editbutton').style.display="none";
+		document.getElementById('student_picture').style.display="none";
 		document.getElementById('hello').style.display="none";
 	}
 </script>
