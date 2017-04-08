@@ -6,15 +6,21 @@
 
 <div class="main_content">
 <div class="displaycontainer"><Center>
-  <img src="../gallery/logo/file.png" style="height:45px;width:45px;" id="search_image" onClick="search()">
+  <!--<img src="../gallery/logo/file.png" style="height:45px;width:45px;" id="search_image" onClick="search()">
     <section id="search">
       <form method="get" action="#" class="searching" >
         <input type="text" name="sname" placeholder="Search by Name..">
         <input type="submit" id="search_s" value="Search">
       </form></Center>
-    </section>
+    </section>-->
 <table class="table table-striped">
   <thead>
+    <tr >
+      <section id="search">
+      <form method="get" action="#" class="searching">
+      <td colspan="12" style=""><input type="text" placeholder="Enter student's initial" id="admin_search" name="sname"/><input type="Submit" value="Search" id="search_s"></td>
+    </form>
+    </tr>
     <tr>
       <td>Sid</td>
       <td>fname</td>
@@ -60,7 +66,7 @@
           <input id="txt_delete<?php echo $value['sid']; ?>" type="hidden" value="<?php echo $value['sid']; ?>">
           <button id="btn_delete<?php echo $value['sid']; ?>" value="<?php echo $value['sid']; ?>">Delete</button>
           <script>
-  //on the click of the submit button 
+  //on the click of the submit button
 $("#btn_delete<?php echo $value['sid']; ?>").click(function(){
 
 if (confirm("Do want to Delete book <?php echo $value['fname']; ?>?") == true) {
@@ -69,8 +75,8 @@ if (confirm("Do want to Delete book <?php echo $value['fname']; ?>?") == true) {
  // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
  // alert(postData);
  var myData={"deleteStu":deleteStu};
- //call your .php script in the background, 
- //when it returns it will call the success function if the request was successful or 
+ //call your .php script in the background,
+ //when it returns it will call the success function if the request was successful or
  //the error one if there was an issue (like a 404, 500 or any other error status)
  $.ajax({
     url : "students.php",
@@ -83,15 +89,15 @@ if (confirm("Do want to Delete book <?php echo $value['fname']; ?>?") == true) {
         location.reload();
          }
 
-}); 
- 
-                                    
+});
+
+
 } else {
     x = "You pressed Cancel!";
 }
 document.getElementById("demo").innerHTML = x;
- 
-}); 
+
+});
 </script>
         </td>
         </tr>

@@ -14,7 +14,7 @@
       echo '<div class="alert alert-success">'.$success.'</div>';
   ?>
   <img src="../gallery/logo/filee.png" style="height:50px;width:50px;cursor:pointer" id="clickadd" onClick="add()">
-  <img src="../gallery/logo/file.png" style="height:50px;width:50px;cursor:pointer;" id="search_image" onClick="search()">
+  <!--<img src="../gallery/logo/file.png" style="height:50px;width:50px;cursor:pointer;" id="search_image" onClick="search()">-->
 <table id="admin_table">
   <form method="post" action="add_notes.php" enctype="multipart/form-data">
         <tr class="trans"><th colspan="2">Uploading new Note</th></tr>
@@ -54,15 +54,22 @@
 
 
 <div class="displaycontainer">
-<center>
+<!--<center>
 <section id="search">
 <form method="get" action="#" class="searching">
   <input type="text" name="nname" placeholder="Search by Name..">
   <input type="submit" id="search_n" value="Search">
 </form>
-</section></center>
+</section></center>-->
   <table class="table table-striped" >
   <thead>
+    <tr>
+      <section id="search">
+      <form method="get" action="#" class="searching">
+      <td colspan="12" style=""><input type="text" placeholder="Enter book initial" id="admin_search" name="nname"/><input type="Submit" value="Search" id="search_s"></td>
+    </form>
+    </tr>
+
     <tr>
       <td>nid</td>
       <td>name</td>
@@ -72,7 +79,7 @@
     </tr>
   </thead>
   <tbody>
-    
+
     <?php
      if(!isset($_GET['nname'])){
 
@@ -88,11 +95,11 @@
          ?></td>
         <td>
         <a href="edit_note.php?nid=<?php echo $value['nid'];?>"><button>Edit</button></a>
-        
+
           <input id="txt_delete<?php echo $value['nid']; ?>" type="hidden" value="<?php echo $value['nid']; ?>">
           <button id="btn_delete<?php echo $value['nid']; ?>" value="<?php echo $value['nid']; ?>">Delete</button>
           <script>
-  //on the click of the submit button 
+  //on the click of the submit button
 $("#btn_delete<?php echo $value['nid']; ?>").click(function(){
 
 if (confirm("Do want to Delete Ebook <?php echo $value['name']; ?>?") == true) {
@@ -101,8 +108,8 @@ if (confirm("Do want to Delete Ebook <?php echo $value['name']; ?>?") == true) {
  // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
  // alert(postData);
  var myData={"delNote":delNote};
- //call your .php script in the background, 
- //when it returns it will call the success function if the request was successful or 
+ //call your .php script in the background,
+ //when it returns it will call the success function if the request was successful or
  //the error one if there was an issue (like a 404, 500 or any other error status)
  $.ajax({
     url : "notes.php",
@@ -115,15 +122,15 @@ if (confirm("Do want to Delete Ebook <?php echo $value['name']; ?>?") == true) {
         location.reload();
          }
 
-}); 
- 
-                                    
+});
+
+
 } else {
     x = "You pressed Cancel!";
 }
 document.getElementById("demo").innerHTML = x;
- 
-}); 
+
+});
 </script>
         </td>
         </tr>

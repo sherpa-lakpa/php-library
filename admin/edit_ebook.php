@@ -18,7 +18,7 @@
 		    <?php
 		      foreach ($list_ebook as $key => $values) {
 		      	?>
-		    <tr class="trans"><td colspan="2" style="font-size:30px; color:teal;">Edit ebooks</td></tr>
+		    <tr class="trans"><td colspan="2" style="font-size:30px; color:black;">Edit ebooks</td></tr>
 		    <tr>
 			<tr>
 			  <td><label for="Title">Name:</label></td>
@@ -54,7 +54,7 @@
 	</form>
 </table>
 
-    <?php   
+    <?php
     }
     ?>
 </div>

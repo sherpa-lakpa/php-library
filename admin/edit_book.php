@@ -19,7 +19,7 @@
 		    <?php
 		      foreach ($list_book as $key => $values) {
 		      	?>
-		    <tr class="trans"><td colspan="2" style="font-size:30px; color:teal;">Edit Book</td></tr>
+		    <tr class="trans"><td colspan="2" style="font-size:30px; color:black;">Edit Book</td></tr>
 		    <tr>
 			<tr>
 			  <td><label for="Title">Name:</label></td>
@@ -75,13 +75,13 @@
 		    <td colspan="2">
 		      		<input type="submit" name="edit_book" value="Edit"/>
 		    </td></tr>
-<?php   
+<?php
     }
     ?>
 	</form>
 </table>
 
-    
+
 </div>
 
 </body>

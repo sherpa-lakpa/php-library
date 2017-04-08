@@ -18,7 +18,7 @@
 		    <?php
 		      foreach ($list_note as $key => $values) {
 		      	?>
-		    <tr class="trans"><td colspan="2" style="font-size:30px; color:teal;">Edit Note</td></tr>
+		    <tr class="trans"><td colspan="2" style="font-size:30px; color:black;">Edit Note</td></tr>
 		    <tr>
 			<tr>
 			  <td><label for="Title">Name:</label></td>
@@ -49,13 +49,13 @@
 		    <td colspan="2">
 		      		<input type="submit" name="edit_note" value="Edit"/>
 		    </td></tr>
-<?php   
+<?php
     }
     ?>
 	</form>
 </table>
 
-    
+
 </div>
 
 </body>
