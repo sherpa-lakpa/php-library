@@ -46,7 +46,7 @@
     </tr>
     <tr>
     <td colspan="2">
-      		<input type="submit" name="add_ebooks" class="button" />
+      		<input type="submit" value="Upload" name="add_ebooks" class="button" />
     </td></tr>
 
 	</form>
@@ -91,7 +91,6 @@
         <td><?php echo $value['name']; ?></td>
         <td><?php echo $value['subject']; ?></td>
         <td><?php echo $value['category']; ?></td>
-         ?></td>
         <td>
         <a href="edit_ebook.php?eid=<?php echo $value['eid'];?>"><button>Edit</button></a>
          <input id="txt_delete<?php echo $value['eid']; ?>" type="hidden" value="<?php echo $value['eid']; ?>">

@@ -46,7 +46,7 @@
     </tr>
     <tr>
     <td colspan="2">
-          <input type="submit" name="add_notes" class="button" />
+          <input type="submit" value="Upload" name="add_notes" class="button" />
     </td></tr>
 
   </form>
@@ -92,7 +92,6 @@
         <td><?php echo $value['name']; ?></td>
         <td><?php echo $value['subject']; ?></td>
         <td><?php echo $value['category']; ?></td>
-         ?></td>
         <td>
         <a href="edit_note.php?nid=<?php echo $value['nid'];?>"><button>Edit</button></a>
 

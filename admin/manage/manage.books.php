@@ -68,6 +68,7 @@
     $edition = $_POST['edition'];
     $sem = $_POST['semester'];
     $category = $_POST['category'];
+    $quantity = $_POST['quantity'];
 
     $nam = $_FILES['file']['name'];
     $tmp_name = $_FILES['file']['tmp_name'];
@@ -79,9 +80,10 @@
       $target = 'image/demo.jpg';
     }
 
-    $addEbook = $init->addBook($name,$author,$category,$target,$publisher,$edition,$subject,$sem);
+    $addEbook = $init->addBook($name,$author,$category,$target,$publisher,$edition,$subject,$sem,$quantity);
     if($addEbook == 1){
         $success = 'success!';
+        header('books.php');
     }else{
       $error = "Failed to add book!";
     }
@@ -97,6 +99,7 @@
     $edition = $_POST['edition'];
     $semester = $_POST['semester'];
     $category = $_POST['category'];
+    $quantity = $_POST['quantity'];
 
     $nam = $_FILES['file']['name'];
       $tmp_name = $_FILES['file']['tmp_name'];
@@ -107,7 +110,7 @@
         }else{
       $target = "image/demo.jpg";
     }
-    $edit = $init->editBook($id,$name,$target,$author,$category,$publisher,$edition,$subject,$semester);
+    $edit = $init->editBook($id,$name,$target,$author,$category,$publisher,$edition,$subject,$semester,$quantity);
 
     if($edit == 1)
     {
@@ -154,6 +157,7 @@ if (isset($_GET['bname'])) {
         <td>'.$value['publisher'].'</td>
         <td>'.$value['edition'].'</td>
         <td>'.$value['category'].'</td>
+        <td>'.$value['quantity'].'</td>
         <td><a href="edit_book.php?bid='.$value['bid'].'"><button>Edit</button></a>
           <a href="books.php?delBook='.$value['bid'].'"><button>Delete</button></a></td></tr>';
     }

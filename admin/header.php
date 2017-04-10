@@ -15,6 +15,11 @@
       changeYear: true,
       dateFormat: 'yy-mm-dd'
     });
+    $("#due_date1").datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: 'yy-mm-dd'
+    });
     $("#seekbar").slider({
       range: "max",
       min: 0,
@@ -72,12 +77,13 @@ window.onclick=function(event)
   <div class="dropdown" onclick="dropdown()">
     <button  class="dropbtn" ><img src="../gallery/avatar-3.png" id="logout" style="height:40px;width:40px;float:left;border-radius:100%;border:2px solid white;" ><section style="font-size:14px;color:white;float:left;margin :15px 0px 0px 3px;"><u><?php echo $_SESSION['todo_name']; ?></section></u> <section style="margin-top:15px;">&#9660;</section></button>
     <div id="myDropdown" class="dropdown-content">
-    <a href="#">Admin<img src="../gallery/avatar-3.png" style="border:2px solid teal;border-radius:10px;" ></a>
+    <a href="index.php">Admin<img src="../gallery/avatar-3.png" style="border:2px solid teal;border-radius:10px;" ></a>
     <a href="../libs/logout.php">Logout<img src="../gallery/logo/poweroff.png"></a>
     </div>
   </div>
   <section id="issues" style="color:white;float:right;"> <a href="issues.php"><img src="../gallery/logo/databasee.png"><section style="color:white;background:red;border-radius:100%;float:right;margin-top:15px;font-size:15px;padding:5px;text-align:center;margin-right:5px; "><b><?php echo $init->countIssues(); ?></b>
 </section></a></section>
+ <section id="issues" style="color:white;float:right;"> <a href="category.php"><img src="../gallery/logo/database.png"><section style="margin: 10px;"></section></a></section>
 </div>
   <div class="sidebar">
     <ul>

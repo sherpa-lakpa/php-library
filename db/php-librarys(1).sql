@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 15, 2017 at 11:11 AM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.20
+-- Generation Time: Apr 10, 2017 at 01:10 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,34 +35,34 @@ CREATE TABLE `books` (
   `publisher` varchar(40) NOT NULL,
   `edition` varchar(10) NOT NULL,
   `subject` varchar(30) NOT NULL,
-  `semester` varchar(1) NOT NULL
+  `semester` varchar(1) NOT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `books`
 --
 
-INSERT INTO `books` (`bid`, `name`, `image`, `author`, `category`, `publisher`, `edition`, `subject`, `semester`) VALUES
-(1, 'Game of thrones', 'image/got.jpg', 'Georger R.R. Martin', 'Nobel', '', '', '', '0'),
-(2, 'Harry Porter', 'image/hp.jpg', 'J.K Rowling', 'Nobel', '', '', '', '0'),
-(3, 'Go Set a Watchman', 'image/gw.jpg', 'Harper Lee', 'Nobel', '', '', '', '0'),
-(4, 'The Girl On The Train', 'image/tgot.jpg', 'Paula Hawkins', 'Nobel', '', '', '', '0'),
-(6, 'To kill A MockingBird', 'image/ki.jpg', 'Harper Lee', 'Nobel', '', '', '', '0'),
-(7, 'The Hobbit', 'image/th.jpg', 'J.R.R. Tolkein', 'Nobel', '', '', '', '0'),
-(8, 'Vampire Academy', 'image/va.jpg', 'Richelle Mead', 'Nobel', '', '', '', '0'),
-(9, 'Divergent', 'image/d.jpg', 'Veronica Roth', 'Nobel', '', '', '', '0'),
-(10, 'Hush Hush', 'image/hh.jpg', 'Becca Fitzpatrick', 'Nobel', '', '', '', '0'),
-(11, 'The Maze Runner', 'image/tmr.jpg', 'James Dashner', 'Nobel', '', '', '', '0'),
-(12, 'The Hunger Games', 'image/thg.jpg', 'Suzanne Collins', 'Nobel', '', '', '', '0'),
-(13, 'The Girl with The Dragon Tatoo', 'image/gt.jpg', 'Steig Larsson', 'Nobel', '', '', '', '0'),
-(14, 'The Hast', 'image/theh.jpg', 'Stephene Meyer', 'Nobel', '', '', '', '0'),
-(15, 'Artemis fowl', 'image/af.jpg', 'Eoin Colfer', 'Nobel', '', '', '', '0'),
-(16, 'Eragon', 'image/e.jpg', 'Christopher Paolini', 'Nobel', '', '', '', '0'),
-(17, 'The Bad Beginning', 'image/tbb.jpg', 'Lemony Snicket', 'Nobel', '', '', '', '0'),
-(18, 'Just Listen', 'image/sd.jpg', 'Sarah Dessen', 'Nobel', '', '', '', '0'),
-(19, 'Silent Scream', 'image/ss.jpg', 'Angela Marsons', 'Nobel', '', '', '', '0'),
-(20, 'Twilight', 'image/t.jpg', 'Stephenie Meyer', 'Nobel', '', '', '', '0'),
-(30, 'new graphics', 'image/demo.jpg', 'lakpa', 'Course', 'person', '2010', 'computer graphics', '4');
+INSERT INTO `books` (`bid`, `name`, `image`, `author`, `category`, `publisher`, `edition`, `subject`, `semester`, `quantity`) VALUES
+(1, 'Game of thrones', 'image/got.jpg', 'Georger R.R. Martin', 'Nobel', '', '', '', '0', 9),
+(2, 'Harry Porter', 'image/hp.jpg', 'J.K Rowling', 'Nobel', '', '', '', '0', 9),
+(3, 'Go Set a Watchman', 'image/gw.jpg', 'Harper Lee', 'Nobel', '', '', '', '0', 10),
+(4, 'The Girl On The Train', 'image/tgot.jpg', 'Paula Hawkins', 'Nobel', '', '', '', '0', 10),
+(6, 'To kill A MockingBird', 'image/ki.jpg', 'Harper Lee', 'Nobel', '', '', '', '0', 10),
+(7, 'The Hobbit', 'image/th.jpg', 'J.R.R. Tolkein', 'Nobel', '', '', '', '0', 10),
+(8, 'Vampire Academy', 'image/va.jpg', 'Richelle Mead', 'Nobel', '', '', '', '0', 10),
+(9, 'Divergent', 'image/d.jpg', 'Veronica Roth', 'Nobel', '', '', '', '0', 10),
+(10, 'Hush Hush', 'image/hh.jpg', 'Becca Fitzpatrick', 'Nobel', '', '', '', '0', 10),
+(11, 'The Maze Runner', 'image/tmr.jpg', 'James Dashner', 'Nobel', '', '', '', '0', 5),
+(12, 'The Hunger Games', 'image/thg.jpg', 'Suzanne Collins', 'Nobel', '', '', '', '0', 9),
+(13, 'The Girl with The Dragon Tatoo', 'image/gt.jpg', 'Steig Larsson', 'Nobel', '', '', '', '0', 10),
+(14, 'The Hast', 'image/theh.jpg', 'Stephene Meyer', 'Nobel', '', '', '', '0', 13),
+(15, 'Artemis fowl', 'image/af.jpg', 'Eoin Colfer', 'Nobel', '', '', '', '0', 33),
+(16, 'Eragon', 'image/e.jpg', 'Christopher Paolini', 'Nobel', '', '', '', '0', 13),
+(17, 'The Bad Beginning', 'image/tbb.jpg', 'Lemony Snicket', 'Nobel', '', '', '', '0', 14),
+(18, 'Just Listen', 'image/demo.jpg', 'Sarah Dessen', 'Nobel', '', '', '', '0', 0),
+(19, 'Silent Scream', 'image/demo.jpg', 'Angela Marsons', 'Nobel', '', '', '', '0', 0),
+(22, 'tes', 'image/demo.jpg', 'test', 'Course', 'test', 'test', 'test', '2', 0);
 
 -- --------------------------------------------------------
 
@@ -81,7 +81,8 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`cid`, `name`) VALUES
 (1, 'Nobel'),
-(2, 'Course');
+(2, 'Course'),
+(7, 'IT ML');
 
 -- --------------------------------------------------------
 
@@ -104,13 +105,9 @@ CREATE TABLE `ebooks` (
 INSERT INTO `ebooks` (`eid`, `name`, `subject`, `category`, `download`) VALUES
 (1, 'toc.zip', 'Toc', 'Course', 'ebooks/toc.zip'),
 (2, 'dbms.zip', 'dbms', 'Course', 'ebooks/dbms.zip'),
-(5, 'SAD', 'sad', 'Course', 'ebooks/sad.zip'),
-(6, 'chapter1', 'IT', 'Course', 'ebooks/IT.txt'),
+(6, 'chapter', 'IT', 'Course', ''),
 (7, 'Hacking', 'computer', 'Course', 'ebooks/hacking.txt'),
-(8, 'zip bomb', 'IT', 'Nobel', 'ebooks/dont touch.txt'),
-(9, 'big datas', 'IT', 'Nobel', ''),
-(10, 'economy', 'commerse', 'Course', ''),
-(11, 'DBMS', 'DBMS', 'Course', 'ebooks/index.html');
+(8, 'zip bomber', 'IT', 'Nobel', '');
 
 -- --------------------------------------------------------
 
@@ -172,7 +169,8 @@ CREATE TABLE `feedbacks` (
 
 INSERT INTO `feedbacks` (`fid`, `feedby`, `feed_type`, `feeds`) VALUES
 (1, 'Lakpa Sherpa', 'idea', 'Give some features for teacher too!'),
-(2, 'Basanta Shahi', 'praise', 'Well done! Guys! I am impressed with your works. ');
+(2, 'Basanta Shahi', 'praise', 'Well done! Guys! I am impressed with your works. '),
+(3, 'Lakpa Sherpaa<br>', 'idea', 'How about feedback by people who are already logged in with facebook!');
 
 -- --------------------------------------------------------
 
@@ -205,22 +203,23 @@ CREATE TABLE `issues` (
   `issuedate` date NOT NULL,
   `submission` date NOT NULL,
   `b_id` int(11) NOT NULL,
-  `s_id` int(11) NOT NULL
+  `s_id` int(11) NOT NULL,
+  `bookmarked` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `issues`
 --
 
-INSERT INTO `issues` (`tid`, `issuedate`, `submission`, `b_id`, `s_id`) VALUES
-(1, '2016-08-19', '2016-08-26', 1, 1),
-(4, '2016-08-19', '2016-08-18', 3, 2),
-(7, '2016-08-21', '2016-08-25', 19, 1),
-(8, '2016-08-22', '2016-08-25', 2, 13),
-(9, '2016-08-22', '2016-08-23', 15, 5),
-(10, '2016-09-16', '2016-09-16', 0, 0),
-(11, '2016-09-16', '2016-09-16', 0, 0),
-(12, '2016-09-16', '2016-09-16', 0, 0);
+INSERT INTO `issues` (`tid`, `issuedate`, `submission`, `b_id`, `s_id`, `bookmarked`) VALUES
+(4, '2016-08-19', '2016-08-18', 3, 2, '2016-04-12'),
+(12, '2016-09-16', '2016-09-16', 6, 2, '2016-04-12'),
+(13, '2017-03-25', '2017-03-25', 13, 2, '2016-03-01'),
+(159, '2017-04-10', '2017-04-17', 17, 1, '2017-04-10'),
+(162, '0000-00-00', '0000-00-00', 1, 1, '2017-04-10'),
+(164, '0000-00-00', '0000-00-00', 2, 1, '2017-04-10'),
+(165, '0000-00-00', '0000-00-00', 15, 22, '2017-04-10'),
+(166, '0000-00-00', '0000-00-00', 17, 22, '2017-04-10');
 
 -- --------------------------------------------------------
 
@@ -266,9 +265,8 @@ CREATE TABLE `notes` (
 --
 
 INSERT INTO `notes` (`nid`, `name`, `subject`, `category`, `download`) VALUES
-(1, 'dms', 'Database Management ', 'Course', 'ebooks/dbms.zip'),
-(2, 'Test', 'any', 'Course', 'notes/multiple.txt'),
-(3, 'SAD', 'SAD', 'Course', 'notes/sad.zip');
+(1, 'dbms', 'Database Management ', 'Course', ''),
+(2, 'Test', 'any', 'Course', 'notes/multiple.txt');
 
 -- --------------------------------------------------------
 
@@ -322,14 +320,11 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`image`, `sid`, `email`, `password`, `fname`, `program`, `year`, `roll_no`, `address`, `mobile`, `reg_date`, `reg_time`, `ip_address`) VALUES
-('pp/lakpa.jpg', 1, 'sherpalakpa18@gmail.com', 'developer', 'Lakpa Sherpa', 'BSc. CSIT', '2071', 15, 'kapan', '9849446626', '0000-00-00', '00:00:00', ''),
+('pp/lakpa.jpg', 1, 'sherpalakpa18@gmail.com', 'developer', 'Lakpa Sherpa<br>', 'BSc. CSIT', '2071', 15, 'kapan', '9849446626', '0000-00-00', '00:00:00', ''),
 ('pp/sandes.jpg', 2, '', 'designer', 'Sandes Jonchhe', 'Bsc. CSIT', '2071', 28, '', '9849128762', '0000-00-00', '00:00:00', ''),
-('pp/basanta.jpg', 3, '', 'vuro', 'Basanta Shahi', '2071', '2071', 8, '', '9843312532', '0000-00-00', '00:00:00', ''),
 ('', 4, '', 'admin', 'admin', 'Bsc CSIT', '2071', 1, '', '9803030413', '0000-00-00', '00:00:00', ''),
-('', 5, 'saileshmainali123@gmail.com', 'kapan123', 'Sailesh Mainali', 'BSc. CSIT', '2071', 27, 'kapan', '9801234567', '2016-07-31', '18:18:47', '::1'),
-('', 12, 'bjbhai35@gmail.com', 'nothing35', 'bijay koirala', 'BSc. CSIT', '2071', 11, 'kapan,kathmandu', '9843312905', '2016-08-22', '16:02:38', '::1'),
-('', 13, 'talk2samrat27@gmail.com', '123456789', 'Samrat Acharya', 'BSc. CSIT', '2071', 24, 'Kushma,Parbat', '9847748310', '2016-08-22', '16:06:05', '::1'),
-('', 14, 'jonny@gmail.com', 'test', 'Sipal Vuro', 'BSc. CSIT', '2072', 2, 'anywhere', '9841000001', '2016-08-25', '16:36:33', '::1');
+('', 21, 'abc@gmail.com', 'asdf', 'Jhon Doe', 'blank', '2069', 0, '', '', '2017-04-10', '16:47:26', '127.0.0.1'),
+('pp/IMG_20170207_135320_995.jpg', 22, 'asdf@asdf.com', 'asdf', 'Jhon Doe', 'BSc. CSIT', '2069', 12, 'Somewhere', '9841525252', '2017-04-10', '16:54:18', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -471,17 +466,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `ebooks`
 --
 ALTER TABLE `ebooks`
-  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `eid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `examination`
 --
@@ -496,12 +491,12 @@ ALTER TABLE `exams`
 -- AUTO_INCREMENT for table `feedbacks`
 --
 ALTER TABLE `feedbacks`
-  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `tid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
 --
 -- AUTO_INCREMENT for table `marksheet`
 --
@@ -511,7 +506,7 @@ ALTER TABLE `marksheet`
 -- AUTO_INCREMENT for table `notes`
 --
 ALTER TABLE `notes`
-  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `semester`
 --
@@ -521,7 +516,7 @@ ALTER TABLE `semester`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `subjects`
 --

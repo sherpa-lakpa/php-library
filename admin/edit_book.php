@@ -68,6 +68,10 @@
 						</select></td>
 		    </tr>
 		    <tr>
+		        <td><label for="Title">Quantity:</label></td>
+		        <td><input type="text" name="quantity" id="quantity" value="<?php echo $values['quantity']; ?>" /></td>
+		      </tr>
+		    <tr>
 		      <td>
 					Choose Image:</td><td> <input type="file" name="file" /></td>
 		    </tr>

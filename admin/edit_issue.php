@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <td><label for="Title">Issued Date:</label></td>
-        <td><input type="text" name="issuedate" id="issuedate" value="<?php echo $values['issuedate']; ?>" /></td>
+        <td><input type="text" name="issuedate" id="due_date1" value="<?php echo $values['issuedate']; ?>" /></td>
       </tr>
       <tr>
         <td><label for="Title">Submission Date:</label></td>
@@ -39,6 +39,7 @@
       </tr>
       <tr>
       <tr>
+      <input type="hidden" name="tid" id="tid" value="<?php echo $values['tid']; ?>" />
         <td colspan="2"><input type="submit" value="Edit" name="edit_issue" style="background:green;color:white;border:0px;"/></td>
       </tr>
     <?php

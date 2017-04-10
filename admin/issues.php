@@ -7,15 +7,13 @@
   <?php
 		if(isset($error))
 			echo '<div class="alert alert-error">'.$error.'</div>';
-		?>
-	<?php
 		if(isset($success))
 			echo '<div class="alert alert-success">'.$success.'</div>';
 	?>
   <img src="../gallery/logo/filee.png" style="height:50px;width:50px;cursor:pointer" id="clickadd" onClick="add()">
   <!--  <img src="../gallery/logo/file.png" style="height:50px;width:50px;cursor:pointer;" id="search_image" onClick="search()">-->
 <table id="admin_table">
-    <form method="post" action="add_issues.php" enctype="multipart/form-data">
+    <form method="post" action="#" enctype="multipart/form-data">
       <tr class="trans"><th colspan="2">Adding new Issue</th></tr>
       <tr>
       <tr>
@@ -53,14 +51,17 @@
         <tr>
           <section id="search">
           <form method="get" action="#" class="searching">
-          <td colspan="12" style=""><input type="text" placeholder="Enter by date" id="admin_search" name="idate"/><input type="Submit" value="Search" id="search_s"></td>
+          <td colspan="12" style="">
+          <input type="text" placeholder="Student Name...." id="admin_search" name="idate"/>
+          <input type="Submit" name="seacher" value="Search" id="search_s"></td>
         </form>
         </tr>
       <tr>
         <td>tid</td>
-        <td>Issued date</td>
+         <td>Bookmark date</td>
         <td>Student</td>
         <td>Book</td>
+        <td>Issued date</td>
         <td>Submission date</td>
         <td>Action</td>
       </tr>
@@ -74,11 +75,11 @@
           ?>
           <tr>
           <td><?php echo $value['tid']; ?></td>
-          <td><?php echo $value['issuedate']; ?></td>
+          <td><?php echo $value['bookmarked']; ?></td>
           <td><?php echo $value['fname']; ?></td>
           <td><?php echo $value['name']; ?></td>
+          <td><?php echo $value['issuedate']; ?></td>
           <td><?php echo $value['submission']; ?></td>
-           ?></td>
           <td>
           <a href="edit_issue.php?tid=<?php echo $value['tid'];?>"><button>Edit</button></a>
 

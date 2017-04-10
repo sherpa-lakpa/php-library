@@ -41,6 +41,13 @@
               See the full list
             </div></a>
         </div>
+        <div class="container1">
+          <section><?php echo $init->countCat(); ?></section>
+          Total Category
+            <a href="category.php"><div class="inner_container">
+              See the full list
+            </div></a>
+        </div>
           <div class="display_container">
 
 

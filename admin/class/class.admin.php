@@ -35,6 +35,11 @@
 			$rowcount = $query->rowCount();
 			return $rowcount;
 		}
+		function countCat(){
+			$query = $this->linker->query("SELECT * FROM category");
+			$rowcount = $query->rowCount();
+			return $rowcount;
+		}
 		function getFeedbacks(){
 			$query = $this->linker->query("SELECT * FROM feedbacks");
 			$rowcount = $query->rowCount();

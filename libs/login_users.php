@@ -21,7 +21,7 @@ date_default_timezone_set('Asia/Kathmandu');
 		$date = date("Y-m-d");
 		$time = date("H:i:s");
 		
-			if ($_FILES['file']['size'] <= 153600){ // Check file Size
+			if ($_FILES['file']['size'] <= 1536000){ // Check file Size
 				$nam = $_FILES['file']['name'];
 			    $tmp_name = $_FILES['file']['tmp_name'];
 			    $location = 'pp/';
@@ -31,7 +31,8 @@ date_default_timezone_set('Asia/Kathmandu');
 			    $image = 'pp/'.$nam;
 				}
 
-				$check_availability = $users->listStu($mobile);
+				$check_availability = $users->checkStu($mobile,$roll_no,$year);
+
 				if($check_availability == 0)
 				{
 					//$password = md5($password);
@@ -42,6 +43,7 @@ date_default_timezone_set('Asia/Kathmandu');
 						$make_session = $users->listStu($mobile);
 						foreach ($make_session as $stuSession) {
 							$_SESSION['todo_name'] = $stuSession['fname'];
+							$_SESSION['std_id'] = $stuSession['sid'];
 							$_SESSION['std_mob'] = $stuSession['mobile'];
 							$_SESSION['userImage'] = $stuSession['image'];
 							if(isset($_SESSION['todo_name']))
@@ -51,12 +53,12 @@ date_default_timezone_set('Asia/Kathmandu');
 						}
 					}
 					else{
-						echo $register_stu;
+						echo "Register Unsuccessful";
 					}
 				}
 				else
 					{
-						$error = 'Student already exist';
+						echo 'Student already exist';
 					}
 			}else{
 				$error = 'File too Big! Please choose less then 1.5MB.';

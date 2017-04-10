@@ -17,10 +17,10 @@
 				return $result;
 			}
 
-			function addBook($name,$author,$category,$target,$publisher,$edition,$subject,$sem){
-				$query = $this->linker->prepare("INSERT INTO books (name,author,category,image,publisher,edition,subject,semester)
-				 VALUES (?,?,?,?,?,?,?,?)");
-				$values = array($name,$author,$category,$target,$publisher,$edition,$subject,$sem);
+			function addBook($name,$author,$category,$target,$publisher,$edition,$subject,$sem,$quantity){
+				$query = $this->linker->prepare("INSERT INTO books (name,author,category,image,publisher,edition,subject,semester,quantity)
+				 VALUES (?,?,?,?,?,?,?,?,?)");
+				$values = array($name,$author,$category,$target,$publisher,$edition,$subject,$sem,$quantity);
 				$query->execute($values);
 				$counts = $query->rowCount();
 				return $counts;
@@ -79,10 +79,10 @@
 				return $result;
 			}
 			
-			function editBook($id,$name,$target,$author,$category,$publisher,$edition,$subject,$semester){
+			function editBook($id,$name,$target,$author,$category,$publisher,$edition,$subject,$semester,$quantity){
 			$query = $this->linker->query("UPDATE books SET 
 				name='$name',image='$target',author='$author',category='$category'
-				,publisher='$publisher',edition='$edition',subject='$subject',semester='$semester' 
+				,publisher='$publisher',edition='$edition',subject='$subject',semester='$semester',quantity='$quantity'
 				WHERE bid='$id'");
 			
 			$counts = $query->rowCount();

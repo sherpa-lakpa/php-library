@@ -23,6 +23,7 @@
 				return $result;
 		}
 
+
 		function registerUsers($username,$email,$password,$ip_address,$date,$time)
 		{
 			$query = $this->linker->prepare("INSERT INTO users (username,email,password,ip_address,reg_date,reg_time) 
@@ -58,11 +59,11 @@
 			return $query->fetchAll();
 		}
 
-		function bookmarkBook($issuedate,$submission,$b_id,$s_id)
+		function bookmarkBook($bookmark,$b_id,$s_id)
 			{
-				$query = $this->linker->prepare("INSERT INTO issues (issuedate,submission,b_id,s_id) VALUES (?,?,?,?)");
+				$query = $this->linker->prepare("INSERT INTO issues (b_id,s_id,bookmarked) VALUES (?,?,?)");
 
-				$values = array($issuedate,$submission,$b_id,$s_id);
+				$values = array($b_id,$s_id,$bookmark);
 				$query->execute($values);
 				$counts = $query->rowCount();
 				return $counts;
@@ -72,7 +73,40 @@
 			$query = $this->linker->query("SELECT * FROM issues WHERE b_id = '$b_id' AND s_id = '$s_id'");
 			return $query->rowCount();
 		}
+		function checkQunatity($b_id){
+			$query = $this->linker->query("SELECT * FROM books WHERE bid = '$b_id'");
+			return $query->fetchAll();
+		}
 
+		function setZero($b_id){
+			$query = $this->linker->query("UPDATE `books` SET `quantity`=0 WHERE bid = '$b_id'");
+			return $query->rowCount();
+		}
+
+		function decBook($b_id){
+			$query = $this->linker->query("UPDATE `books` SET `quantity`=`quantity`-1 WHERE bid = '$b_id'");
+			return $query->rowCount();
+		}
+
+		function delIssue($issue_id){
+			$query = $this->linker->query("DELETE FROM issues WHERE tid='$issue_id'");
+			$counts = $query->rowCount();
+			return $counts;
+		}
+
+		function incBook($book_id){
+			$query = $this->linker->query("UPDATE `books` SET `quantity`=`quantity`+1 WHERE bid = '$book_id' ");
+			return $query->rowCount();
+		}
+
+		function checkLimit($s_id){
+			$query = $this->linker->query("SELECT * FROM issues WHERE s_id = '$s_id'");
+
+			$rowcount = $query->rowCount();
+			
+			return $rowcount;
+			
+		}
 
 		function insertFeeds($feedby,$feed_type,$feeds){
 			$query = $this->linker->prepare("INSERT INTO feedbacks (feedby,feed_type,feeds) VALUES (?,?,?)");

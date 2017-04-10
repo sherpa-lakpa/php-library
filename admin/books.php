@@ -69,6 +69,10 @@
   			</select></td>
       </tr>
        <tr>
+        <td><label for="Title">Quantity:</label></td>
+        <td><input type="text" name="quantity" id="quantity" /></td>
+      </tr>
+       <tr>
 
       <tr>
         <td>Choose Image:</td><td> <input type="file" name="file" /></td>
@@ -108,6 +112,7 @@
         <td>publisher</td>
         <td>edition</td>
         <td>category</td>
+        <td>Quantity</td>
         <td>Action</td>
       </tr>
     </thead>
@@ -127,7 +132,7 @@
           <td><?php echo $value['publisher']; ?></td>
           <td><?php echo $value['edition']; ?></td>
           <td><?php echo $value['category']; ?></td>
-           ?></td>
+          <td><?php echo $value['quantity']; ?></td>
           <td>
           <a href="edit_book.php?bid=<?php echo $value['bid'];?>"><button>Edit</button></a>
 
@@ -176,7 +181,7 @@ document.getElementById("demo").innerHTML = x;
       }
       ?>
       </tr>
-      <tr><td colspan="8"><?php echo $pagination; ?></td></tr>
+      <tr><td colspan="9"><?php echo $pagination; ?></td></tr>
       <?php
 	    }else{
 	      echo $searched_b;

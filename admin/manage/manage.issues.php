@@ -8,7 +8,6 @@
 	    $list_issue = $init->listIdIssue($tid);
 	}else{
 	  	$count = $init->countIssue();
-      echo $count;
 
         if(isset($_GET['page'])){ // This filter only get variables
           $page = preg_replace("#[^0-9]#","",$_GET['page']);
@@ -70,8 +69,9 @@
     }
 
     if(isset($_POST['edit_issue'])){
-    $id = $_GET['tid'];
 
+    $tid = $_POST['tid'];
+    
     $issuedate = $_POST['issuedate'];
     $submission = $_POST['submission'];
     $s_id = $_POST['s_id'];
@@ -101,7 +101,8 @@
   }
   // Issue searching part
 
-  if (isset($_GET['idate'])) {
+  if (isset($_GET['seacher'])) {
+    
     if ($_GET['idate'] == "") {
       header('Location: issues.php');
     }
@@ -130,4 +131,3 @@
     }
   }
 }
-?>

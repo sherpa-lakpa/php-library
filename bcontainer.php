@@ -1,32 +1,8 @@
 <?php
  include_once('class.ManageUsers.php');
  $init = new ManageUsers();
-
-  if(isset($_POST['book_id'])){
-    $issuedate = date("Y-m-d");
-    $submission = $_POST['submission'];
-    if($submission == ""){
-      $submission = date("Y-m-d"); // Increase date ????
-    }
-    $s_id = $_POST['s_id'];
-    $b_id = $_POST['book_id'];
-
-    $check = $init->checkBookmark($b_id,$s_id);
-
-    echo '<script>alert('.$check.');</script>';
-
-      if ($check < 1) {
-        $addIssue = $init->bookmarkBook($issuedate,$submission,$b_id,$s_id);
-        if($addIssue == 1){
-          $success = 'success!';
-        }
-        else{
-            $error = 'Failed to add Issue';
-        }
-      }
-    }
-?>
- <div class="rcontainer grid50"><center><br><br><br><br><br>
+ ?>
+<div class="rcontainer grid50"><center><br><br><br><br><br>
 <div class="bcontainer">
 
         <div class="bookmark">
@@ -48,6 +24,7 @@
                 $edition = $value['edition'];
                 $subject = $value['subject'];
                 $sem = $value['semester'];
+                $quantity = $value['quantity'];
             		$image = $value['image'];
                 if ($image == "") {
                   $image ='4.jpg';
@@ -74,15 +51,17 @@ $("#add_issues").click(function(){
  //when it returns it will call the success function if the request was successful or 
  //the error one if there was an issue (like a 404, 500 or any other error status)
  $.ajax({
-    url : "bcontainer.php",
+    url : "manage.bookmark.php",
     type: "POST",
     data : myData,
     success: function(data,status,xhr)
      {
         //if success then just output the text to the status div then clear the form inputs to prepare for new data
         $("#status_text").html(data);
+        if (data != "") {
+          alert(data);
+        }
         location.reload();
-        
          }
 
 }); 
@@ -145,6 +124,11 @@ $("#add_issues").click(function(){
         </tr>';
         }
         ?>
+        <tr>
+        
+          <td>Quantity:</td>
+          <td><?php echo $quantity; ?></td>
+        </tr>
       </table>
   </div>
       <div class="suggestion">

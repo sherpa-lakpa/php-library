@@ -1,0 +1,128 @@
+<?php
+  include_once('session.php');
+  include_once('header.php');
+  include_once('manage/manage.category.php');
+?>
+
+<div class="main_content"><center>
+  <?php
+		if(isset($error))
+			echo '<div class="alert alert-error">'.$error.'</div>';
+		?>
+	<?php
+		if(isset($success))
+			echo '<div class="alert alert-success">'.$success.'</div>';
+	?>
+  <img src="../gallery/logo/filee.png" style="height:50px;width:50px;cursor:pointer" id="clickadd" onClick="add()">
+<!--    <img src="../gallery/logo/file.png" style="height:50px;width:50px;cursor:pointer;" id="search_image" onClick="search()">-->
+<table id="admin_table">
+  <form method="post" action="#" enctype="multipart/form-data">
+        <tr class="trans"><th colspan="2" >Add category</th></tr>
+        <tr>
+    <tr>
+      <td><label for="Title">Name:</label></td>
+    	<td><input type="text" name="name" id="name" /></td>
+    </tr>
+    <tr>
+    <td colspan="2">
+      		<input type="submit" value="Add" name="add_categorys" class="button" />
+    </td></tr>
+
+	</form>
+</table>
+
+
+<div class="displaycontainer">
+<!--<center>
+<section id="search">
+    <form method="get" action="#" class="searching">
+    <input type="text" name="ename" placeholder="Search by Name..">
+    <input type="submit" id="search_e" value="Search">
+  </form>
+</section></center>-->
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <section id="search">
+      <form method="get" action="#" class="searching">
+      <td colspan="12" style=""><input type="text" placeholder="Enter Category ..." id="admin_search" name="cname"/><input type="Submit" value="Search" id="search_s"></td>
+    </form>
+    </tr>
+
+    <tr>
+      <td>Cid</td>
+      <td>name</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <?php
+    if(!isset($_GET['cname'])){
+
+    if($list_category !== 0)
+    {
+      foreach ($list_category as $key => $value) {
+    ?>
+        <tr>
+        <td><?php echo $value['cid']; ?></td>
+        <td><?php echo $value['name']; ?></td>
+        <td>
+        <a href="edit_category.php?cid=<?php echo $value['cid'];?>"><button>Edit</button></a>
+         <input id="txt_delete<?php echo $value['cid']; ?>" type="hidden" value="<?php echo $value['cid']; ?>">
+          <button id="btn_delete<?php echo $value['cid']; ?>" value="<?php echo $value['cid']; ?>">Delete</button>
+          <script>
+  //on the click of the submit button
+$("#btn_delete<?php echo $value['cid']; ?>").click(function(){
+
+if (confirm("Do want to Delete Ebook <?php echo $value['name']; ?>?") == true) {
+ var delCat = $('#txt_delete<?php echo $value['cid']; ?>').val();
+ // make the postdata
+ // var postData = '&ID='+ID+'&NAME='+NAME+'&PASSWORD='+PASSWORD+'&CREDITS'+CREDITS+'&EMAIL_ID'+EMAIL_ID+'&CREATED_ON'+CREATED_ON+'&MODIFIED_ON'+MODIFIED_ON;
+ // alert(postData);
+ var myData={"delCat":delCat};
+ //call your .php script in the background,
+ //when it returns it will call the success function if the request was successful or
+ //the error one if there was an issue (like a 404, 500 or any other error status)
+ $.ajax({
+    url : "category.php",
+    type: "GET",
+    data : myData,
+    success: function(data,status,xhr)
+     {
+        //if success then just output the text to the status div then clear the form inputs to prepare for new data
+        $("#status_text").html(data);
+        location.reload();
+         }
+
+});
+
+
+} else {
+    x = "You pressed Cancel!";
+}
+document.getElementById("demo").innerHTML = x;
+
+});
+</script>
+        </td>
+        </tr>
+        <?php
+      }
+    }else{
+      echo '<td><td></td></td><td><td>Sorry no more Student to show under this section</td></td><td></td><td></td>';
+    }
+    ?>
+    </tr>
+    <tr><td colspan="5"><?php echo $category_pagination; ?></td></tr>
+    <?php
+      }else{
+        echo $searched_c;
+      }
+    ?>
+  </tbody>
+  </table>
+</div>
+
+	</div>
+</body>
+</html>

@@ -24,6 +24,19 @@
 			}
 			return $result;
 		}
+		function checkStu($mobile,$roll_no,$year){
+			$query = $this->linker->query("SELECT * FROM student WHERE mobile='$mobile' AND roll_no = '$roll_no' AND year='$year'");
+			$counts = $query->rowCount();
+			if($counts == 1)
+			{
+				$result = $query->fetchAll();
+			}
+			else
+			{
+				$result = $counts;
+			}
+			return $result;
+		}
 
 		function registerStu($image,$email,$password,$fname,$program,$year,$roll_no,$address,$mobile,$date,$time,$ip_address)
 		{
@@ -46,7 +59,7 @@
 			return $counts;
 		}
 		function listStuIssue($sid){
-			$query = $this->linker->query("SELECT bid,tid,issuedate,name,image,submission FROM issues,books WHERE s_id='$sid' AND bid=b_id");
+			$query = $this->linker->query("SELECT bid,tid,issuedate,name,image,submission,bookmarked FROM issues,books WHERE s_id='$sid' AND bid=b_id");
 			$counts = $query->rowCount();
 			if($counts >= 1){
 				$result = $query->fetchAll();
@@ -55,13 +68,6 @@
 			}
 			return $result;
 		}
-
-		function delIssue($issue_id){
-			$query = $this->linker->query("DELETE FROM issues WHERE tid='$issue_id'");
-			$counts = $query->rowCount();
-			return $counts;
-		}
-  		
   		/* Edit student */
 
 		function editStu($column,$editval,$sid){
