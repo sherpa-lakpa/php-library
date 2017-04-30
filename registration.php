@@ -10,8 +10,9 @@
 		<a href="index.php"><img src="gallery/stlawrence.png"></a>
 
 			<form class="login_info" method="post" action="#">
-							<input type="text" placeholder="Id or Email" id="l_username" name="username" />
-							<input type="password" placeholder="Password" id="l_password" name="password" />
+							<input type="text" placeholder="Id or Email" id="l_username" name="username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" />
+							<input type="password" placeholder="Password" id="l_password" name="password" value="<?php if(isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>"  />
+							<input type="checkbox" name="rememberme" id="rememberme" value="1"  <?php if(isset($_COOKIE["user_name"])) { ?> checked <?php } ?> > &nbsp; <span style="color: white;">Remember me</span>
 							<input type="submit" id="submit" value="Login" name="logStu">
 			</form>
 
