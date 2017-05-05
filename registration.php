@@ -40,7 +40,7 @@
 						<td><input type="Password" placeholder="Re-Password" id="repassword" class="" name="repassword"></td></tr>
 				<tr><td><select name="year" id="year"><option value="blank">Select your batch</option><option>2068</option><option>2069</option><option>2070</option><option>2071</option><option>2072</option> </td>
 						<td><input type="text" placeholder="Roll No.(Required)" id="roll" class="" name="roll_no"></td></tr>
-						
+
 						<tr><td><select name="semester" id="semester"><option value="blank">Select your semester</option><option>First</option><option>Second</option><option>Third</option><option>Fourth</option><option>Fifth</option><option>Sixth</option><option>Seventh</option>	<option>Eight</option></td>
 						<td><input type="text" placeholder="Registration number(Required)" id="regn" class="" name="rrgn"></td></tr>
 
@@ -105,6 +105,15 @@ function validation()
 	{
 		document.getElementById("display").innerHTML="Please enter your Roll number";
 	}
+	else if(semester.value=="")
+	{
+		document.getElementById("display").innerHTML="Please select your current semester";
+	}
+	else if(regn.value=="")
+	{
+		document.getElementById("display").innerHTML="Please enter your registration number";
+	}
+
 	else if(contact.value=="")
 	{
 		document.getElementById("display").innerHTML="Please enter your mobile number";

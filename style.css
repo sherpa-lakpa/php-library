@@ -1792,3 +1792,8 @@ input
 	background:white;
 	color:black;
 }
+.rfooter
+{
+	background:red;
+	height:50px;
+}

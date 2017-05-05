@@ -1,5 +1,5 @@
 <div class="footer">
-          <section>Library &copy 2016</section>
+          <section>Library &copy 2017</section>
 
           <section onClick="feedback()" style="cursor:pointer" id="footer_feedback">Feedback</section>
           <a href="index.php">Home</a>
