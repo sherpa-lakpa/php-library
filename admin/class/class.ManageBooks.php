@@ -80,6 +80,7 @@
 			}
 			
 			function editBook($id,$name,$target,$author,$category,$publisher,$edition,$subject,$semester,$quantity){
+
 			$query = $this->linker->query("UPDATE books SET 
 				name='$name',image='$target',author='$author',category='$category'
 				,publisher='$publisher',edition='$edition',subject='$subject',semester='$semester',quantity='$quantity'

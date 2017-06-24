@@ -101,14 +101,21 @@
     $category = $_POST['category'];
     $quantity = $_POST['quantity'];
 
+    $edit = $init->listIdBook($id);
+
+    foreach ($edit as $key => $value) {
+      $check_img = $value['image'];
+    }
+
     $nam = $_FILES['file']['name'];
-      $tmp_name = $_FILES['file']['tmp_name'];
-      $location = '../image/';
-      $target = $location.$nam;
-      if(move_uploaded_file($tmp_name,$target)){
+    $tmp_name = $_FILES['file']['tmp_name'];
+    $location = '../image/';
+    $target = $location.$nam;
+
+    if($nam !== "" && move_uploaded_file($tmp_name,$target)){
         $target = 'image/'.$nam;
         }else{
-      $target = "image/demo.jpg";
+      $target = $check_img;
     }
     $edit = $init->editBook($id,$name,$target,$author,$category,$publisher,$edition,$subject,$semester,$quantity);
 
@@ -116,7 +123,7 @@
     {
       header('Location: books.php');
     }else{
-      $error = 'There was an error';
+      $error = 'Please make some changes';
     }
   }
 

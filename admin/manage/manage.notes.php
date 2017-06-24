@@ -91,14 +91,20 @@
     $subject = $_POST['subject'];
     $category = $_POST['category'];
 
+    $edit = $init->listIdNote($id);
+
+    foreach ($edit as $key => $value) {
+      $check_note = $value['download'];
+    }
+
     $nam = $_FILES['file']['name'];
       $tmp_name = $_FILES['file']['tmp_name'];
       $location = '../ebooks/';
       $target = $location.$nam;
-      if(move_uploaded_file($tmp_name,$target)){
+      if($nam !== "" && move_uploaded_file($tmp_name,$target)){
         $target = 'ebooks/'.$nam;
         }else{
-      $target = "";
+      $target = $check_note;
     }
     $edit = $init->editNote($id,$name,$subject,$category,$target);
     if($edit == 1)

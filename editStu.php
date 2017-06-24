@@ -37,19 +37,19 @@
 
 </div>
 <script>
-		function showEdit(editableObj) {
-			$(editableObj).css("background","rgba(0,0,0,0.7)");
-		} 
-		
-		function saveToDatabase(editableObj,column,id) {
-			$(editableObj).css("background","rgba(0,0,0,0.4) url(pp/loaderIcon.gif) no-repeat right");
-			$.ajax({
-				url: "manage.students.php",
-				type: "POST",
-				data:'column='+column+'&editval='+editableObj.innerHTML+'&sid='+id,
-				success: function(data){
-					$(editableObj).css("background","rgba(0,0,0,0.2)");
-				}        
-		   });
-		}
-		</script>
+	function showEdit(editableObj) {
+		$(editableObj).css("background","rgba(0,0,0,0.7)");
+	} 
+	
+	function saveToDatabase(editableObj,column,id) {
+		$(editableObj).css("background","rgba(0,0,0,0.4) url(pp/loaderIcon.gif) no-repeat right");
+		$.ajax({
+			url: "manage.students.php",
+			type: "POST",
+			data:'column='+column+'&editval='+editableObj.innerHTML+'&sid='+id,
+			success: function(data){
+				$(editableObj).css("background","rgba(0,0,0,0.2)");
+			}        
+	   });
+	}
+</script>
